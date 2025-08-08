@@ -2,6 +2,7 @@
 import Services from "@/components/Services";
 import "../app/style.css";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+import MyTeam from "@/components/MyTeam";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <HeroComponent />
       <AboutUsComponent />
       <OurTeam />
+      <MyTeam />
       <Services />
     </div>
   );

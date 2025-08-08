@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-
+import "swiper/css/bundle";
 const services = [
   {
     title: "Web Development",
@@ -51,7 +51,7 @@ const services = [
 export default function Services() {
   return (
     <section className="min-h-screen bg-white dark:bg-gray-900 py-20 px-6">
-       <div className="w-full flex justify-center mb-10">
+      <div className="w-full flex justify-center mb-10">
         <div className="md:w-[70%] text-center">
           <h2 className="text-4xl font-bold text-green-600">Our Services</h2>
         </div>
@@ -66,9 +66,17 @@ export default function Services() {
 
         {/* Desktop: Swiper carousel */}
         <div className="hidden md:block">
-          <Swiper spaceBetween={30} slidesPerView={3}>
+          <Swiper
+            spaceBetween={20} // smaller gap like in screenshot
+            slidesPerView={4} // exactly 4 visible at once
+            breakpoints={{
+              320: { slidesPerView: 1, spaceBetween: 15 }, // mobile
+              640: { slidesPerView: 2, spaceBetween: 15 }, // small tablets
+              1024: { slidesPerView: 4, spaceBetween: 20 }, // desktop
+            }}
+          >
             {services.map((service, i) => (
-              <SwiperSlide key={i}>
+              <SwiperSlide key={i} className="flex justify-center">
                 <ServiceCard service={service} i={i} />
               </SwiperSlide>
             ))}
