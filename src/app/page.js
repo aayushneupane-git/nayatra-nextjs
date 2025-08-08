@@ -1,17 +1,29 @@
-// app/page.tsx or app/page.jsx
+"use client";
+
 import Services from "@/components/Services";
 import "../app/style.css";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import MyTeam from "@/components/MyTeam";
+import { useState } from "react";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <div className="bg-white text-black dark:bg-black dark:text-white">
       <HeroComponent />
       <AboutUsComponent />
-      <OurTeam />
+      {/* <OurTeam /> */}
       <MyTeam />
       <Services />
+      <ContactUs />
+      <Footer />
+
+      {/* <div className="bg-green-600 text-white text-center py-4 h-screen">
+        <div
+          className="w-full h-[70%]"
+          style={{ backgroundImage: "url('/transparentfooter.png')" }}
+        ></div>
+      </div> */}
     </div>
   );
 }
@@ -203,6 +215,158 @@ const OurTeam = () => {
               </div>
             </article>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+//
+const ContactUs = () => {
+  const [selectedService, setSelectedService] = useState(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    details: "",
+  });
+
+  const services = [
+    "Product Design",
+    "Website Development",
+    "Mobile App Development",
+  ];
+
+  const handleServiceSelect = (service) => {
+    setSelectedService(service === selectedService ? null : service);
+  };
+
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const submissionData = {
+      service: selectedService,
+      ...formData,
+    };
+
+    alert(
+      `Message sent successfully!\n\nService: ${
+        selectedService || "Not specified"
+      }\nName: ${formData.name}\nEmail: ${formData.email}\nDetails: ${
+        formData.details
+      }`
+    );
+
+    // Reset form
+    setSelectedService(null);
+    setFormData({
+      name: "",
+      email: "",
+      details: "",
+    });
+  };
+
+  return (
+    <section className="py-16 px-4 md:px-20 bg-gray-100 dark:bg-black text-black dark:text-white">
+      <div className="flex flex-col md:flex-row justify-center gap-10 md:w-[70%] mx-auto">
+        {/* Left side - Contact form */}
+        <div className="w-full md:w-3/4 flex flex-col gap-6">
+          <div>
+            <h2 className="text-4xl font-bold text-green-600">Contact Us</h2>
+            <h3 className="text-xl">What can we do for you</h3>
+          </div>
+
+          <div className="flex gap-4 flex-wrap">
+            {services.map((service) => (
+              <button
+                key={service}
+                type="button"
+                onClick={() => handleServiceSelect(service)}
+                className={`px-4 py-2 border-b-2 transition-colors ${
+                  selectedService === service
+                    ? "border-green-600 text-green-600"
+                    : "border-gray-300 hover:border-green-400 dark:border-gray-600"
+                }`}
+              >
+                {service}
+              </button>
+            ))}
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-8">
+            <div className="flex flex-col">
+              <label htmlFor="name" className="block mb-1">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                className="w-full px-1 py-2 bg-transparent border-0 border-b-2 border-gray-300 rounded-none 
+                focus:border-green-600 focus:outline-none focus:ring-0 
+                dark:border-gray-600 dark:focus:border-green-600"
+                required
+              />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="email" className="block mb-1">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                className="w-full px-1 py-2 bg-transparent border-0 border-b-2 border-gray-300 rounded-none 
+                focus:border-green-600 focus:outline-none focus:ring-0 
+                dark:border-gray-600 dark:focus:border-green-600"
+                required
+              />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="details" className="block mb-1">
+                Project details
+              </label>
+              <textarea
+                id="details"
+                rows={4}
+                value={formData.details}
+                onChange={handleInputChange}
+                className="w-full px-1 py-2 bg-transparent border-0 border-b-2 border-gray-300 rounded-none 
+                focus:border-green-600 focus:outline-none focus:ring-0 
+                dark:border-gray-600 dark:focus:border-green-600"
+                required
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors mt-6"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+
+        {/* Right side - Contact info */}
+        <div className="w-full md:w-1/2 flex flex-col justify-center items-start">
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg font-bold text-gray-500 mb-2">Phone</h3>
+              <p className="text-lg">+1 (833) 562-3112</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-gray-500 mb-2">Email</h3>
+              <p className="text-lg">Hello@conceptsoftworks.com</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
