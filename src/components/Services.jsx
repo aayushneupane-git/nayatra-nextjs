@@ -1,10 +1,10 @@
 "use client";
 
+import { useState, useEffect, useCallback, useRef } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import { motion } from "framer-motion";
-import { FiArrowRight } from "react-icons/fi";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/bundle";
+import { FiArrowRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+
 const services = [
   {
     title: "Web Development",
@@ -49,6 +49,22 @@ const services = [
 ];
 
 export default function Services() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, slidesToScroll: 1 });
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(true);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setCanScrollPrev(emblaApi.canScrollPrev());
+    setCanScrollNext(emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+  }, [emblaApi, onSelect]);
+
   return (
     <section className="min-h-screen bg-white dark:bg-gray-900 py-20 px-6">
       <div className="w-full flex justify-center mb-10">
@@ -56,6 +72,7 @@ export default function Services() {
           <h2 className="text-4xl font-bold text-green-600">Our Services</h2>
         </div>
       </div>
+
       <div className="max-w-7xl mx-auto">
         {/* Mobile: stacked layout */}
         <div className="block md:hidden space-y-8">
@@ -64,30 +81,48 @@ export default function Services() {
           ))}
         </div>
 
-        {/* Desktop: Swiper carousel */}
-        <div className="hidden md:block">
-          <Swiper
-            spaceBetween={20} // smaller gap like in screenshot
-            slidesPerView={4} // exactly 4 visible at once
-            breakpoints={{
-              320: { slidesPerView: 1, spaceBetween: 15 }, // mobile
-              640: { slidesPerView: 2, spaceBetween: 15 }, // small tablets
-              1024: { slidesPerView: 4, spaceBetween: 20 }, // desktop
-            }}
-          >
-            {services.map((service, i) => (
-              <SwiperSlide key={i} className="flex justify-center">
-                <ServiceCard service={service} i={i} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+        {/* Desktop: Embla Carousel */}
+        <div className="hidden md:block relative">
+          {/* Arrows */}
+          <div className="absolute -left-12 top-1/2 -translate-y-1/2 z-10">
+            <button
+              onClick={() => emblaApi && emblaApi.scrollPrev()}
+              disabled={!canScrollPrev}
+              className="p-2 text-2xl bg-gray-200 dark:bg-gray-700 rounded-full disabled:opacity-30"
+            >
+              <FiChevronLeft />
+            </button>
+          </div>
+
+          <div className="absolute -right-12 top-1/2 -translate-y-1/2 z-10">
+            <button
+              onClick={() => emblaApi && emblaApi.scrollNext()}
+              disabled={!canScrollNext}
+              className="p-2 text-2xl bg-gray-200 dark:bg-gray-700 rounded-full disabled:opacity-30"
+            >
+              <FiChevronRight />
+            </button>
+          </div>
+
+          {/* Embla viewport */}
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex">
+              {services.map((service, i) => (
+                <div
+                  key={i}
+                  className="flex-[0_0_33.3333%] max-w-[33.3333%] px-2"
+                >
+                  <ServiceCard service={service} i={i} />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-// Card Component
 function ServiceCard({ service, i }) {
   return (
     <motion.div
@@ -95,13 +130,12 @@ function ServiceCard({ service, i }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: i * 0.2, duration: 0.7 }}
-      className="relative rounded-xl shadow-lg overflow-hidden cursor-pointer group bg-white dark:bg-gray-800"
+      className="relative w-full rounded-xl shadow-lg overflow-hidden cursor-pointer group bg-white dark:bg-gray-800"
     >
-      {/* Image */}
       <img
         src={service.image}
         alt={service.title}
-        className="w-full h-90 object-cover"
+        className="w-full h-60 object-cover"
         loading="lazy"
       />
 
@@ -117,18 +151,16 @@ function ServiceCard({ service, i }) {
         ))}
       </div>
 
-      {/* Gradient overlay */}
+      {/* Gradient */}
       <div
-        className="
-          absolute bottom-0 left-0 w-full h-40
+        className="absolute bottom-0 left-0 w-full h-40
           bg-gradient-to-t
           from-black/80 via-black/30 to-transparent
           dark:from-black/60 dark:via-black/20 dark:to-transparent
-          z-10
-        "
+          z-10"
       />
 
-      {/* Text + Arrow */}
+      {/* Title & Arrow */}
       <div className="absolute bottom-4 left-4 right-4 z-20 flex items-center justify-between">
         <p className="text-white font-semibold text-sm sm:text-base line-clamp-2">
           {service.title}
