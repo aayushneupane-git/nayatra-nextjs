@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import { motion } from "framer-motion";
 import { FiArrowRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
@@ -132,11 +133,13 @@ function ServiceCard({ service, i }) {
       transition={{ delay: i * 0.2, duration: 0.7 }}
       className="relative w-full rounded-xl shadow-lg overflow-hidden cursor-pointer group bg-white dark:bg-gray-800"
     >
-      <img
+      <Image
         src={service.image}
         alt={service.title}
+        width={1200}
+        height={600}
         className="w-full h-60 object-cover"
-        loading="lazy"
+        unoptimized={service.image.includes('testgrid.io')}
       />
 
       {/* Badges */}

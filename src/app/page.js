@@ -6,6 +6,7 @@ import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import MyTeam from "@/components/MyTeam";
 import { useState } from "react";
 import Footer from "@/components/Footer";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -35,7 +36,7 @@ const HeroComponent = () => {
         <div className="relative z-10 flex items-center h-full">
           <div className="container mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <h1 className="text-[1.9rem] leading-tight sm:text-5xl md:text-6xl font-bold max-w-[22ch]">
-              Let’s make <span className="text-green-400">{'{}'}</span>
+              Let’s make <span className="text-green-400">{'{ }'}</span>
               <br />
               software together!
             </h1>
@@ -47,12 +48,13 @@ const HeroComponent = () => {
           <div className="bg-white/95 dark:bg-zinc-900/95 text-black dark:text-white py-4 px-6 rounded-t-2xl w-full max-w-7xl z-20 shadow-lg">
             <div className="grid grid-cols-5 place-items-center gap-6">
               {logoSrcs.map((src, i) => (
-                <img
+                <Image
                   key={i}
                   src={src}
                   alt={`Logo ${i + 1}`}
+                  width={80}
+                  height={80}
                   className="w-16 h-16 lg:w-20 lg:h-20 object-contain"
-                  loading="lazy"
                 />
               ))}
             </div>
@@ -72,11 +74,12 @@ const HeroComponent = () => {
             className="basis-1/3 shrink-0 flex items-center justify-center px-3"
             aria-hidden={i >= logoSrcs.length ? true : undefined}
           >
-            <img
+            <Image
               src={src}
               alt={`Logo ${i % logoSrcs.length + 1}`}
+              width={56}
+              height={56}
               className="w-14 h-14 object-contain"
-              loading="lazy"
               draggable={false}
             />
           </li>
@@ -125,23 +128,26 @@ const AboutUsComponent = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Images */}
           <div className="flex gap-3 sm:gap-4 justify-center">
-            <img
+            <Image
               src="/aboutus_left.png"
               alt="Team collaboration left"
+              width={400}
+              height={500}
               className="w-1/3 rounded-lg shadow-md object-cover"
-              loading="lazy"
             />
-            <img
+            <Image
               src="/aboutus_middle.png"
               alt="Team collaboration middle"
+              width={400}
+              height={500}
               className="w-1/3 rounded-lg shadow-md object-cover"
-              loading="lazy"
             />
-            <img
+            <Image
               src="/aboutus_right.png"
               alt="Team collaboration right"
+              width={400}
+              height={500}
               className="w-1/3 rounded-lg shadow-md object-cover"
-              loading="lazy"
             />
           </div>
 
@@ -214,11 +220,12 @@ const OurTeam = () => {
               key={index}
               className="bg-white dark:bg-zinc-900 rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300"
             >
-              <img
+              <Image
                 className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover mb-4 border-4 border-green-400"
                 src={member.img}
                 alt={member.name}
-                loading="lazy"
+                width={112}
+                height={112}
               />
               <h3 className="text-lg sm:text-xl font-bold mb-1">{member.intro}</h3>
               <p className="text-sm sm:text-base font-medium">{member.name}</p>
@@ -317,7 +324,7 @@ const ContactUs = () => {
           <div className="flex flex-col gap-6">
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold text-green-600 dark:text-white">Contact Us</h2>
-              <h3 className="text-lg sm:text-xl">What can we do for you</h3>
+              <h3 className="text-lg sm:text-xl">What can we do for you?</h3>
             </div>
 
             <div className="flex w-full gap-2 sm:gap-3">

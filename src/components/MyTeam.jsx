@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
@@ -84,11 +85,12 @@ function TeamCard({ member, className = "dark:bg-gray-500", ...rest }) {
       className={`rounded-lg overflow-hidden shadow-md  bg-[linear-gradient(53deg,rgba(171,206,96,1)_1%,rgba(171,206,96,1)_1%,rgba(96,206,112,1)_45%)]  ${className}`}
     >
       <div className="relative">
-        <img
+        <Image
           src={member.img}
           alt={member.name}
+          width={800}
+          height={400}
           className="w-full h-72 sm:h-80 object-cover grayscale"
-          loading="lazy"
         />
       </div>
       <div className=" dark:bg-gray-700 bg-[linear-gradient(53deg,rgba(171,206,96,1)_1%,rgba(171,206,96,1)_5%,rgba(96,206,112,1)_45%)] text-white p-4 border-t border-white/20">

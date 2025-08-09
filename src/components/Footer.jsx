@@ -1,4 +1,5 @@
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -19,7 +20,7 @@ const Footer = () => {
         {/* Logo + Name */}
         <div className="max-w-md flex flex-col sm:flex-row gap-4 sm:items-center">
           <div className="flex justify-center sm:justify-start">
-            <img src="/logo_white.png" className="w-[120px] sm:w-[150px]" />
+            <Image src="/logo_white.png" alt="NepSoft logo" width={150} height={60} className="w-[120px] sm:w-[150px]" />
           </div>
           <div className="text-center sm:text-left">
             <h2 className="text-2xl sm:text-3xl font-bold">NepSoft</h2>
@@ -78,6 +79,10 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <div className="absolute bottom-3 left-0 right-0 z-10 text-center text-lg sm:text-xl opacity-90 font-bold">
+        Copyright © NepSoft <span className="text-black">Inc.</span>
+      </div>
+
     </footer>
   );
 };
