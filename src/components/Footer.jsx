@@ -1,6 +1,8 @@
+import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+
 const Footer = () => {
   return (
-    <footer className="relative text-white bg-green-600 h-[440px] flex items-center">
+    <footer className="relative text-white bg-green-600 h-auto md:h-[440px] flex items-center py-8 md:py-0">
       {/* Background pattern */}
       <div
         className="absolute inset-0 z-0"
@@ -15,43 +17,70 @@ const Footer = () => {
       ></div>
 
       {/* Content container */}
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between gap-8">
-          {/* Left aligned content */}
-          <div className="md:w-1/2 pl-4 md:pl-8">
-            <div className="max-w-md">
-              <h2 className="text-3xl font-bold">NepSoft</h2>
-              <h3 className="text-xl font-semibold mb-4">
-                Innovate. Integrate. Elevate.
-              </h3>
-              <p className="text-lg mb-8">
-                Concept Softworks is a software company we develop custom built
-                software for clients - covering everything from financial
-                institutions & medical companies all the way to tech companies
-                and government organizations.
-              </p>
-            </div>
+      <div className="container mx-auto px-4 relative z-10 flex flex-col gap-8">
+        {/* Logo + Name */}
+        <div className="max-w-md flex flex-col sm:flex-row gap-4 sm:items-center">
+          <div className="flex justify-center sm:justify-start">
+            <img src="/logo_white.png" className="w-[120px] sm:w-[150px]" />
+          </div>
+          <div className="text-center sm:text-left">
+            <h2 className="text-2xl sm:text-3xl font-bold">NepSoft</h2>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-4">
+              Innovate. Integrate. Elevate.
+            </h3>
+          </div>
+        </div>
+
+        {/* Description + Links */}
+        <div className="flex flex-col lg:flex-row justify-between gap-6">
+          {/* Description */}
+          <div className="text-center lg:text-left">
+            <p className="text-base sm:text-lg lg:w-3/4 mx-auto lg:mx-0">
+              Concept Softworks is a software company we develop custom built
+              software for clients - covering everything from financial
+              institutions & medical companies all the way to tech companies and
+              government organizations.
+            </p>
           </div>
 
-          {/* Right side navigation */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pr-4 md:pr-8">
-            <div>
-              <h3 className="text-xl font-bold mb-4">About</h3>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold mb-4">Project</h3>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold mb-4">Service</h3>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold mb-4">Client</h3>
+          {/* Navigation + Social */}
+          <div className="flex flex-col gap-4 md:gap-6">
+            {/* Navigation links */}
+            <div className="flex  justify-center md:justify-start gap-6">
+              {["About", "Project", "Service", "Client"].map((item) => (
+                <h3
+                  key={item}
+                  className="text-lg sm:text-xl font-bold hover:cursor-pointer"
+                >
+                  {item}
+                </h3>
+              ))}
             </div>
 
-            <div>
-
+            {/* Social media icons */}
+            <div className="flex justify-center md:justify-start gap-4 text-2xl">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaFacebookF className="hover:text-blue-500 cursor-pointer" />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInstagram className="hover:text-pink-500 cursor-pointer" />
+              </a>
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaTwitter className="hover:text-sky-500 cursor-pointer" />
+              </a>
             </div>
-           
           </div>
         </div>
       </div>
