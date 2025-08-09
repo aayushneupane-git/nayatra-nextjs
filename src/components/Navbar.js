@@ -23,13 +23,15 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-white dark:bg-gray-900 shadow-md sticky top-0 z-50 transition-colors duration-300">
+    <nav className="fixed top-2 left-1/2 -translate-x-1/2 
+    bg-white dark:bg-gray-900 rounded-xl shadow-md z-50 transition-colors duration-300
+    w-full max-w-7xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           
           {/* Logo */}
           <div className="flex-shrink-0 text-xl font-bold text-gray-900 dark:text-white">
-            <Link href="/">NAYATRA</Link>
+            <Link href="/"><span className="text-green-600">Nep</span>Soft</Link>
           </div>
 
           {/* Desktop Menu */}

@@ -23,7 +23,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body className="font-sans">
+        <link
+          href="https://fonts.googleapis.com/css2?family=Andada+Pro:ital,wght@0,400..840;1,400..840&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet"
+        />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div>
             <Navbar />
