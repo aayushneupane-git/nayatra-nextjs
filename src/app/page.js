@@ -147,7 +147,7 @@ const AboutUsComponent = () => {
 
           {/* Copy */}
           <div className="text-center lg:text-left">
-            <h2 className="text-3xl sm:text-4xl font-bold text-green-600 mb-4 sm:mb-6">About Us</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-green-600 mb-4 sm:mb-6 dark:text-white">About Us</h2>
             <p className="text-base sm:text-lg leading-relaxed text-gray-800 dark:text-gray-300">
               Concept Softworks is a software company, we develop custom built
               software for clients – covering everything from financial
@@ -316,7 +316,7 @@ const ContactUs = () => {
           {/* Left side - Contact form */}
           <div className="flex flex-col gap-6">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-green-600">Contact Us</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold text-green-600 dark:text-white">Contact Us</h2>
               <h3 className="text-lg sm:text-xl">What can we do for you</h3>
             </div>
 

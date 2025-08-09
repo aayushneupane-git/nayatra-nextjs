@@ -2,8 +2,7 @@ import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="relative text-white bg-green-600 h-auto md:h-[440px] flex items-center py-8 md:py-0">
-      {/* Background pattern */}
+    <footer className="relative text-white bg-green-600 h-auto md:h-[440px] flex items-center py-8 md:py-0 dark:bg-gray-800">
       <div
         className="absolute inset-0 z-0"
         style={{
@@ -16,7 +15,6 @@ const Footer = () => {
         }}
       ></div>
 
-      {/* Content container */}
       <div className="container mx-auto px-4 relative z-10 flex flex-col gap-8">
         {/* Logo + Name */}
         <div className="max-w-md flex flex-col sm:flex-row gap-4 sm:items-center">
@@ -33,7 +31,6 @@ const Footer = () => {
 
         {/* Description + Links */}
         <div className="flex flex-col lg:flex-row justify-between gap-6">
-          {/* Description */}
           <div className="text-center lg:text-left">
             <p className="text-base sm:text-lg lg:w-3/4 mx-auto lg:mx-0">
               Concept Softworks is a software company we develop custom built
@@ -43,9 +40,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Navigation + Social */}
           <div className="flex flex-col gap-4 md:gap-6">
-            {/* Navigation links */}
             <div className="flex  justify-center md:justify-start gap-6">
               {["About", "Project", "Service", "Client"].map((item) => (
                 <h3
@@ -57,7 +52,6 @@ const Footer = () => {
               ))}
             </div>
 
-            {/* Social media icons */}
             <div className="flex justify-center md:justify-start gap-4 text-2xl">
               <a
                 href="https://facebook.com"

@@ -68,8 +68,8 @@ export default function Services() {
   return (
     <section className="bg-white dark:bg-gray-900 py-20 px-6">
       <div className="w-full flex justify-center mb-10">
-        <div className="md:w-[70%] text-center">
-          <h2 className="text-4xl font-bold text-green-600">Our Services</h2>
+        <div className="md:w-[70%] text-left">
+          <h2 className="text-4xl font-bold text-green-600 dark:text-white ">Our Services</h2>
         </div>
       </div>
 

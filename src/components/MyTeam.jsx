@@ -40,27 +40,11 @@ export default function MyTeam() {
     <section className="py-12 bg-white dark:bg-black">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-end justify-between gap-4 mb-6">
-          <h2 className="text-green-600 text-2xl sm:text-3xl font-bold">
+          <h2 className="text-green-600 text-2xl sm:text-3xl font-bold dark:text-white">
             Our Team
           </h2>
 
-          {/* Mobile/Tablet controls (hidden on lg+) */}
-          <div className="flex items-center gap-3 lg:hidden">
-            <button
-              onClick={() => scrollByCard("left")}
-              className="w-10 h-10 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center hover:opacity-80 transition"
-              aria-label="Previous"
-            >
-              <FaArrowLeft />
-            </button>
-            <button
-              onClick={() => scrollByCard("right")}
-              className="w-10 h-10 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center hover:opacity-80 transition"
-              aria-label="Next"
-            >
-              <FaArrowRight />
-            </button>
-          </div>
+       
         </div>
 
         {/*
@@ -93,11 +77,11 @@ export default function MyTeam() {
   );
 }
 
-function TeamCard({ member, className = "", ...rest }) {
+function TeamCard({ member, className = "dark:bg-gray-500", ...rest }) {
   return (
     <div
       {...rest}
-      className={`rounded-lg overflow-hidden shadow-md bg-[linear-gradient(53deg,rgba(171,206,96,1)_1%,rgba(171,206,96,1)_1%,rgba(96,206,112,1)_45%)] ${className}`}
+      className={`rounded-lg overflow-hidden shadow-md  bg-[linear-gradient(53deg,rgba(171,206,96,1)_1%,rgba(171,206,96,1)_1%,rgba(96,206,112,1)_45%)]  ${className}`}
     >
       <div className="relative">
         <img
@@ -107,7 +91,7 @@ function TeamCard({ member, className = "", ...rest }) {
           loading="lazy"
         />
       </div>
-      <div className="bg-[linear-gradient(53deg,rgba(171,206,96,1)_1%,rgba(171,206,96,1)_5%,rgba(96,206,112,1)_45%)] text-white p-4 border-t border-white/20">
+      <div className=" dark:bg-gray-700 bg-[linear-gradient(53deg,rgba(171,206,96,1)_1%,rgba(171,206,96,1)_5%,rgba(96,206,112,1)_45%)] text-white p-4 border-t border-white/20">
         <h3 className="text-lg font-bold">{member.name}</h3>
         <p className="text-sm mb-3 opacity-90">{member.role}</p>
         <div className="flex gap-3">
