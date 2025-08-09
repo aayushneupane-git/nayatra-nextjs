@@ -7,8 +7,17 @@ import { ThemeProvider } from "next-themes";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Nayatra",
+  title: "NepSoft",
   description: "This is where the future of software development",
+  keywords: "software, development, agency, web development, mobile apps",
+  authors: [{ name: "NepSoft", url: "https://nepsoft.org" }],
+  creator: "NepSoft",
+  openGraph: {
+    title: "NepSoft",
+    description: "This is where the future of software development",
+    url: "https://nepsoft.org",
+    siteName: "NepSoft",
+  },
 };
 
 export default function RootLayout({ children }) {

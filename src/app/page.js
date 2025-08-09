@@ -17,99 +17,144 @@ export default function Home() {
       <Services />
       <ContactUs />
       <Footer />
-
-      {/* <div className="bg-green-600 text-white text-center py-4 h-screen">
-        <div
-          className="w-full h-[70%]"
-          style={{ backgroundImage: "url('/transparentfooter.png')" }}
-        ></div>
-      </div> */}
     </div>
   );
 }
 
 const HeroComponent = () => {
   return (
-    <section
-      className="relative h-screen bg-cover bg-center text-white dark:text-white"
-      style={{ backgroundImage: "url('/bgimage.avif')" }}
-    >
-      {/* Black transparent overlay on left half */}
-      <div className="absolute inset-y-0 left-0 w-full md:w-1/2 bg-black/60"></div>
+    <>
+      <section
+        className="relative min-h-[60svh] sm:min-h-[70svh] md:h-[90vh] bg-cover bg-center text-white"
+        style={{ backgroundImage: "url('/bgimage.avif')" }}
+      >
+        {/* Overlay: full on mobile, left-half on md+ */}
+        <div className="absolute inset-0 md:inset-y-0 md:left-0 md:w-1/2 bg-black/60" />
 
-      {/* Headline */}
-      <div className="relative z-10 h-full flex items-center pl-8 md:pl-24 max-w-2xl">
-        <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-          Let’s make <span className="text-green-400">{"{}"}</span>
-          <br />
-          software together!
-        </h1>
-      </div>
-
-      {/* Logos */}
-      <div className="absolute bottom-0 left-0 right-0 flex items-center justify-center">
-        <div className="bg-white dark:bg-zinc-900 text-black dark:text-white py-4 px-6 rounded-t-[30px] flex justify-around items-center gap-6 w-[70%] z-20">
-          <img
-            src="https://www.thecloroxcompany.com/wp-content/uploads/2022/08/TCC_Stacked_1200x1200.png"
-            alt="Woox"
-            className="w-20 h-20 object-contain"
-          />
-          <img
-            src="https://www.vhv.rs/dpng/d/8-81706_famous-company-logos-png-transparent-png.png"
-            alt="Exodus"
-            className="w-20 h-20 object-contain"
-          />
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Southern_company_logo.png/250px-Southern_company_logo.png"
-            alt="BitGo"
-            className="w-20 h-20 object-contain"
-          />
-          <img
-            src="https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkxNC1uaW5nLTE1YS5wbmc.png"
-            alt="Ankr"
-            className="w-20 h-20 object-contain"
-          />
-          <img
-            src="https://www.pngkey.com/png/full/141-1417312_generic-branding-generic-company-logo-png.png"
-            alt="Metamask"
-            className="w-20 h-20 object-contain"
-          />
+        {/* Headline */}
+        <div className="relative z-10 flex items-center h-full">
+          <div className="container mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+            <h1 className="text-[1.9rem] leading-tight sm:text-5xl md:text-6xl font-bold max-w-[22ch]">
+              Let’s make <span className="text-green-400">{'{}'}</span>
+              <br />
+              software together!
+            </h1>
+          </div>
         </div>
-      </div>
-    </section>
+
+        {/* Desktop/tablet logos pinned at bottom */}
+        <div className="hidden md:flex absolute bottom-0 left-0 right-0 items-center justify-center px-6">
+          <div className="bg-white/95 dark:bg-zinc-900/95 text-black dark:text-white py-4 px-6 rounded-t-2xl w-full max-w-7xl z-20 shadow-lg">
+            <div className="grid grid-cols-5 place-items-center gap-6">
+              {logoSrcs.map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt={`Logo ${i + 1}`}
+                  className="w-16 h-16 lg:w-20 lg:h-20 object-contain"
+                  loading="lazy"
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mobile logos (stacked below section so they don't steal height) */}
+<div className="md:hidden px-4 pt-4">
+  <div className="bg-white/95 dark:bg-zinc-900/95 text-black dark:text-white rounded-2xl w-full max-w-7xl shadow-lg overflow-hidden">
+    <div className="relative h-20"> {/* fixed height for the strip */}
+      <ul className="flex h-full animate-logo-marquee will-change-transform hover:[animation-play-state:paused] [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+        {/* Duplicate list for seamless loop */}
+        {[...logoSrcs, ...logoSrcs].map((src, i) => (
+          <li
+            key={`logo-${i}`}
+            className="basis-1/3 shrink-0 flex items-center justify-center px-3"
+            aria-hidden={i >= logoSrcs.length ? true : undefined}
+          >
+            <img
+              src={src}
+              alt={`Logo ${i % logoSrcs.length + 1}`}
+              className="w-14 h-14 object-contain"
+              loading="lazy"
+              draggable={false}
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  {/* styled-jsx for the marquee (scoped to this component) */}
+  <style jsx>{`
+    @keyframes logo-marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    /* duration = slower = smoother; tweak 25s → 35s to go slower */
+    .animate-logo-marquee {
+      animation: logo-marquee 25s linear infinite;
+    }
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .animate-logo-marquee {
+        animation: none !important;
+        transform: translateX(0) !important;
+      }
+    }
+  `}</style>
+</div>
+
+    </>
   );
 };
 
+
+const logoSrcs = [
+  "https://www.thecloroxcompany.com/wp-content/uploads/2022/08/TCC_Stacked_1200x1200.png",
+  "https://www.vhv.rs/dpng/d/8-81706_famous-company-logos-png-transparent-png.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Southern_company_logo.png/250px-Southern_company_logo.png",
+  "https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkxNC1uaW5nLTE1YS5wbmc.png",
+  "https://www.pngkey.com/png/full/141-1417312_generic-branding-generic-company-logo-png.png",
+];
+
 const AboutUsComponent = () => {
   return (
-    <section className="py-16 px-4 md:px-20 bg-white dark:bg-black text-black dark:text-white flex justify-center">
-      <div className="flex md:w-[70%] flex-col lg:flex-row items-center lg:items-start gap-10">
-        <div className="flex gap-4 w-full lg:w-1/2 justify-center">
-          <img
-            src="/aboutus_left.png"
-            alt="Team Left"
-            className="w-1/3 rounded-lg shadow-md object-cover"
-          />
-          <img
-            src="/aboutus_middle.png"
-            alt="Team Middle"
-            className="w-1/3 rounded-lg shadow-md object-cover"
-          />
-          <img
-            src="/aboutus_right.png"
-            alt="Team Right"
-            className="w-1/3 rounded-lg shadow-md object-cover"
-          />
-        </div>
+    <section className="py-16 sm:py-20 bg-white dark:bg-black text-black dark:text-white">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Images */}
+          <div className="flex gap-3 sm:gap-4 justify-center">
+            <img
+              src="/aboutus_left.png"
+              alt="Team collaboration left"
+              className="w-1/3 rounded-lg shadow-md object-cover"
+              loading="lazy"
+            />
+            <img
+              src="/aboutus_middle.png"
+              alt="Team collaboration middle"
+              className="w-1/3 rounded-lg shadow-md object-cover"
+              loading="lazy"
+            />
+            <img
+              src="/aboutus_right.png"
+              alt="Team collaboration right"
+              className="w-1/3 rounded-lg shadow-md object-cover"
+              loading="lazy"
+            />
+          </div>
 
-        <div className="w-full lg:w-1/2 h-full flex flex-col items-center justify-center text-center lg:text-left">
-          <h2 className="text-4xl font-bold text-green-600 mb-6">About Us</h2>
-          <p className="text-lg leading-relaxed text-gray-800 dark:text-gray-300">
-            Concept Softworks is a software company, we develop custom built
-            software for clients – covering everything from financial
-            institutions & medical companies all the way to tech companies and
-            government organizations.
-          </p>
+          {/* Copy */}
+          <div className="text-center lg:text-left">
+            <h2 className="text-3xl sm:text-4xl font-bold text-green-600 mb-4 sm:mb-6">About Us</h2>
+            <p className="text-base sm:text-lg leading-relaxed text-gray-800 dark:text-gray-300">
+              Concept Softworks is a software company, we develop custom built
+              software for clients – covering everything from financial
+              institutions & medical companies all the way to tech companies and
+              government organizations.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -154,31 +199,30 @@ const OurTeam = () => {
   ];
 
   return (
-    <section className="py-16 px-4 md:px-20 bg-white dark:bg-black text-black dark:text-white">
-      <div className="w-full flex justify-center mb-10">
-        <div className="md:w-[70%] text-center">
-          <h2 className="text-4xl font-bold text-green-600">Our Team</h2>
-          <p className="mt-4 text-gray-600 dark:text-gray-300">
+    <section className="py-16 sm:py-20 bg-white dark:bg-black text-black dark:text-white">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8 sm:mb-10">
+          <h2 className="text-3xl sm:text-4xl font-bold text-green-600">Our Team</h2>
+          <p className="mt-3 sm:mt-4 text-gray-600 dark:text-gray-300">
             The minds that bring our vision to life.
           </p>
         </div>
-      </div>
 
-      <div className="flex justify-center">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:w-[70%]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {teamMembers.map((member, index) => (
             <article
               key={index}
-              className="bg-white dark:bg-zinc-900 rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:scale-105 transition-transform duration-300"
+              className="bg-white dark:bg-zinc-900 rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300"
             >
               <img
-                className="w-28 h-28 rounded-full object-cover mb-4 border-4 border-green-400"
+                className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover mb-4 border-4 border-green-400"
                 src={member.img}
                 alt={member.name}
+                loading="lazy"
               />
-              <h3 className="text-xl font-bold mb-1">{member.intro}</h3>
-              <p className="text-md font-medium">{member.name}</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+              <h3 className="text-lg sm:text-xl font-bold mb-1">{member.intro}</h3>
+              <p className="text-sm sm:text-base font-medium">{member.name}</p>
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-4">
                 {member.role}
               </p>
               <div className="flex space-x-4 text-green-600 dark:text-green-400 text-xl">
@@ -221,7 +265,6 @@ const OurTeam = () => {
   );
 };
 
-//
 const ContactUs = () => {
   const [selectedService, setSelectedService] = useState(null);
   const [formData, setFormData] = useState({
@@ -242,10 +285,7 @@ const ContactUs = () => {
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [id]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
   const handleSubmit = (e) => {
@@ -266,105 +306,89 @@ const ContactUs = () => {
 
     // Reset form
     setSelectedService(null);
-    setFormData({
-      name: "",
-      email: "",
-      details: "",
-    });
+    setFormData({ name: "", email: "", details: "" });
   };
 
   return (
-    <section className="py-16 px-4 md:px-20 bg-gray-100 dark:bg-black text-black dark:text-white">
-      <div className="flex flex-col md:flex-row justify-center gap-10 md:w-[70%] mx-auto">
-        {/* Left side - Contact form */}
-        <div className="w-full md:w-3/4 flex flex-col gap-6">
-          <div>
-            <h2 className="text-4xl font-bold text-green-600">Contact Us</h2>
-            <h3 className="text-xl">What can we do for you</h3>
-          </div>
+    <section className="py-16 sm:py-20 bg-gray-100 dark:bg-black text-black dark:text-white">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row  justify-between gap-12">
+          {/* Left side - Contact form */}
+          <div className="flex flex-col gap-6">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-green-600">Contact Us</h2>
+              <h3 className="text-lg sm:text-xl">What can we do for you</h3>
+            </div>
 
-          <div className="flex gap-4 flex-wrap">
-            {services.map((service) => (
+            <div className="flex w-full gap-2 sm:gap-3">
+              {services.map((service) => (
+                <button
+                  key={service}
+                  type="button"
+                  onClick={() => handleServiceSelect(service)}
+                  className={`px-3 sm:px-4 w-full py-2 border-b-2 transition-colors ${
+                    selectedService === service
+                      ? "border-green-600 text-green-600"
+                      : "border-gray-300 hover:border-green-400 dark:border-gray-600"
+                  }`}
+                >
+                  {service}
+                </button>
+              ))}
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+              <div className="flex flex-col">
+                <label htmlFor="name" className="mb-1">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  className="w-full px-1 py-2 bg-transparent border-0 border-b-2 border-gray-300 rounded-none focus:border-green-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-green-600"
+                  required
+                />
+              </div>
+              <div className="flex flex-col">
+                <label htmlFor="email" className="mb-1">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="w-full px-1 py-2 bg-transparent border-0 border-b-2 border-gray-300 rounded-none focus:border-green-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-green-600"
+                  required
+                />
+              </div>
+              <div className="flex flex-col">
+                <label htmlFor="details" className="mb-1">Project details</label>
+                <textarea
+                  id="details"
+                  rows={4}
+                  value={formData.details}
+                  onChange={handleInputChange}
+                  className="w-full px-1 py-2 bg-transparent border-0 border-b-2 border-gray-300 rounded-none focus:border-green-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-green-600"
+                  required
+                />
+              </div>
               <button
-                key={service}
-                type="button"
-                onClick={() => handleServiceSelect(service)}
-                className={`px-4 py-2 border-b-2 transition-colors ${
-                  selectedService === service
-                    ? "border-green-600 text-green-600"
-                    : "border-gray-300 hover:border-green-400 dark:border-gray-600"
-                }`}
+                type="submit"
+                className="bg-green-600 text-white px-5 sm:px-6 py-3 rounded-lg hover:bg-green-700 transition-colors mt-4 sm:mt-6 w-full sm:w-auto"
               >
-                {service}
+                Submit
               </button>
-            ))}
+            </form>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-8">
-            <div className="flex flex-col">
-              <label htmlFor="name" className="block mb-1">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                className="w-full px-1 py-2 bg-transparent border-0 border-b-2 border-gray-300 rounded-none 
-                focus:border-green-600 focus:outline-none focus:ring-0 
-                dark:border-gray-600 dark:focus:border-green-600"
-                required
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="email" className="block mb-1">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                className="w-full px-1 py-2 bg-transparent border-0 border-b-2 border-gray-300 rounded-none 
-                focus:border-green-600 focus:outline-none focus:ring-0 
-                dark:border-gray-600 dark:focus:border-green-600"
-                required
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="details" className="block mb-1">
-                Project details
-              </label>
-              <textarea
-                id="details"
-                rows={4}
-                value={formData.details}
-                onChange={handleInputChange}
-                className="w-full px-1 py-2 bg-transparent border-0 border-b-2 border-gray-300 rounded-none 
-                focus:border-green-600 focus:outline-none focus:ring-0 
-                dark:border-gray-600 dark:focus:border-green-600"
-                required
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors mt-6"
-            >
-              Submit
-            </button>
-          </form>
-        </div>
-
-        {/* Right side - Contact info */}
-        <div className="w-full md:w-1/2 flex flex-col justify-center items-start">
-          <div className="space-y-6">
+          {/* Right side - Contact info */}
+          <div className="flex flex-col justify-center gap-6">
             <div>
-              <h3 className="text-lg font-bold text-gray-500 mb-2">Phone</h3>
-              <p className="text-lg">+1 (833) 562-3112</p>
+              <h3 className="text-sm font-bold text-gray-500 mb-1 sm:mb-2 uppercase tracking-wide">Phone</h3>
+              <p className="text-lg sm:text-xl">+1 (833) 562-3112</p>
             </div>
             <div>
-              <h3 className="text-lg font-bold text-gray-500 mb-2">Email</h3>
-              <p className="text-lg">Hello@conceptsoftworks.com</p>
+              <h3 className="text-sm font-bold text-gray-500 mb-1 sm:mb-2 uppercase tracking-wide">Email</h3>
+              <p className="text-lg sm:text-xl">Hello@conceptsoftworks.com</p>
             </div>
           </div>
         </div>
