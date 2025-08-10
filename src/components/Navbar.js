@@ -54,16 +54,6 @@ export default function Navbar() {
               <FiSearch size={20} />
             </button>
 
-            {/* Theme Toggle */}
-            {mounted && (
-              <button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="p-2 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700 transition"
-              >
-                {theme === "dark" ? <BsSun size={18} /> : <BsMoon size={18} />}
-              </button>
-            )}
-
             {/* Mobile menu button */}
             <button
               className="md:hidden text-gray-700 dark:text-gray-300 hover:text-green-500 dark:hover:text-green-400 transition-colors duration-200"
