@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
+import { motion } from "framer-motion";
 
 export default function MyTeam() {
   const scrollerRef = useRef(null);
@@ -14,22 +15,37 @@ export default function MyTeam() {
       name: "Rahul",
       role: "Front End Developer",
       img: "/rahul.png",
-      scale: 1.2, x: 0, y: 0,
-      bgW: 0.78, bgH: 0.56, bgX: 0, bgY: 0,
+      scale: 1.2,
+      x: 0,
+      y: 0,
+      bgW: 0.78,
+      bgH: 0.56,
+      bgX: 0,
+      bgY: 0,
     },
     {
       name: "Shishir Paudel",
       role: "Team Lead",
       img: "/shishir.png",
-      scale: 1.2, x: 0, y: 0,
-      bgW: 0.74, bgH: 0.54, bgX: 0, bgY: 0,
+      scale: 1.2,
+      x: 0,
+      y: 0,
+      bgW: 0.74,
+      bgH: 0.54,
+      bgX: 0,
+      bgY: 0,
     },
     {
       name: "Aayush",
       role: "DevOps Lead",
       img: "/ayush.png",
-      scale: 1.2, x: 0, y: 0,
-      bgW: 0.76, bgH: 0.56, bgX: 0, bgY: 0,
+      scale: 1.2,
+      x: 0,
+      y: 0,
+      bgW: 0.76,
+      bgH: 0.56,
+      bgX: 0,
+      bgY: 0,
     },
   ];
 
@@ -107,9 +123,16 @@ export default function MyTeam() {
 
 function TeamCard({ member, index = 0, className = "", ...rest }) {
   const {
-    name, role, img,
-    scale = 1.12, x = 0, y = 0,
-    bgW = 0.76, bgH = 0.56, bgX = 0, bgY = 0,
+    name,
+    role,
+    img,
+    scale = 1.12,
+    x = 0,
+    y = 0,
+    bgW = 0.76,
+    bgH = 0.56,
+    bgX = 0,
+    bgY = 0,
   } = member;
 
   const CARD_H = 400;
@@ -220,9 +243,27 @@ function TeamCard({ member, index = 0, className = "", ...rest }) {
             <p className="text-sm opacity-90">{role}</p>
           </div>
           <div className="flex items-center gap-4 text-white/95 text-lg">
-            <a href="#" aria-label={`${name} on Facebook`} className="hover:opacity-80"><FaFacebookF /></a>
-            <a href="#" aria-label={`${name} on Twitter`} className="hover:opacity-80"><FaTwitter /></a>
-            <a href="#" aria-label={`${name} on Instagram`} className="hover:opacity-80"><FaInstagram /></a>
+            <a
+              href="#"
+              aria-label={`${name} on Facebook`}
+              className="hover:opacity-80"
+            >
+              <FaFacebookF />
+            </a>
+            <a
+              href="#"
+              aria-label={`${name} on Twitter`}
+              className="hover:opacity-80"
+            >
+              <FaTwitter />
+            </a>
+            <a
+              href="#"
+              aria-label={`${name} on Instagram`}
+              className="hover:opacity-80"
+            >
+              <FaInstagram />
+            </a>
           </div>
         </div>
       </div>

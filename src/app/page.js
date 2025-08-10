@@ -7,16 +7,53 @@ import MyTeam from "@/components/MyTeam";
 import { useState } from "react";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Home() {
+  const fadeUp = {
+    hidden: { opacity: 0, y: 24 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
   return (
     <div className="bg-white text-black dark:bg-black dark:text-white">
-      <HeroComponent />
-      <AboutUsComponent />
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <HeroComponent />
+      </motion.div>
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <AboutUsComponent />
+      </motion.div>
       {/* <OurTeam /> */}
-      <MyTeam />
-      <Services />
-      <ContactUs />
+
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <MyTeam />
+      </motion.div>
+
+     
+        <Services />
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <ContactUs />
+      </motion.div>
     </div>
   );
 }
@@ -190,7 +227,6 @@ const AboutUsComponent = () => {
     </div>
   );
 };
-
 
 const OurTeam = () => {
   const teamMembers = [
