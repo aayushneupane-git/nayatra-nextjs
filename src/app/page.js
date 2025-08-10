@@ -158,8 +158,8 @@ const AboutUsComponent = () => {
             {/* Copy */}
             <div className=" lg:text-left">
               <h2 className="text-green-600 text-2xl text-justify sm:text-3xl font-bold dark:text-white">
-              About US
-            </h2>
+                About US
+              </h2>
               <p className="text-base sm:text-lg leading-relaxed text-gray-800 dark:text-gray-300">
                 Concept Softworks is a software company, we develop custom built
                 software for clients – covering everything from financial
@@ -282,9 +282,8 @@ const OurTeam = () => {
     </section>
   );
 };
-
 const ContactUs = () => {
-  const [selectedService, setSelectedService] = useState(null);
+  const [selectedService, setSelectedService] = useState();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -309,11 +308,6 @@ const ContactUs = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const submissionData = {
-      service: selectedService,
-      ...formData,
-    };
-
     alert(
       `Message sent successfully!\n\nService: ${
         selectedService || "Not specified"
@@ -328,8 +322,67 @@ const ContactUs = () => {
   };
 
   return (
-    <section className="py-16 sm:py-20 bg-gray-100 dark:bg-black text-black dark:text-white">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden py-16 sm:py-20 bg-gray-100 dark:bg-black text-black dark:text-white">
+      {/* Doodle: top-right (tablet/desktop) */}
+      <div className="hidden lg:flex">
+        <Image
+          src="/haveaproject.png"
+          alt=""
+          aria-hidden="true"
+          priority={false}
+          width={900}
+          height={900}
+          className="
+    pointer-events-none select-none
+    absolute z-0
+    right-0 
+    top-10
+    w-[40vw] md:w-[42vw] lg:w-[36vw]
+    max-w-[780px] md:max-w-[640px] lg:max-w-[560px]
+    min-w-[320px]
+    opacity-90
+  "
+        />
+        <Image
+          src="/haveaproject2.png"
+          alt=""
+          aria-hidden="true"
+          priority={false}
+          width={900}
+          height={900}
+          className="
+    pointer-events-none select-none
+    absolute z-0
+    right-0 
+    top-[100px]   /* adjust this value so it’s right under the first one */
+    w-[2vw] md:w-[42vw] lg:w-[36vw]
+    max-w-[780px] md:max-w-[640px] lg:max-w-[560px]
+    min-w-[320px]
+    opacity-90
+  "
+        />
+
+         <Image
+    src="/doodle1.png"
+    alt=""
+    aria-hidden="true"
+    priority={false}
+    width={200}
+    height={200}
+    className="
+      pointer-events-none select-none
+      absolute z-0
+      right-30 
+      top-[200px] /* adjust to be right below the second one */
+      w-[10vw] md:w-[12vw] lg:w-[5vw]
+      max-w-[100px] md:max-w-[200px] lg:max-w-[100px]
+      min-w-[150px]
+      opacity-90
+    "
+  />
+      </div>
+
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row  justify-between gap-12">
           {/* Left side - Contact form */}
           <div className="flex flex-col gap-6">
