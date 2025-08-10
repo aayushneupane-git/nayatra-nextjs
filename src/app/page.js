@@ -126,8 +126,8 @@ const logoSrcs = [
 
 const AboutUsComponent = () => {
   return (
-    <div className="flex items-center justify-center max-w-7px">
-      <section className="py-16 sm:py-20 max-w-7xl bg-white dark:bg-black text-black dark:text-white">
+    <div className="flex items-center justify-center">
+      <section className="relative py-16 sm:py-20 max-w-7xl w-full bg-white dark:bg-black text-black dark:text-white">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Images */}
@@ -138,6 +138,7 @@ const AboutUsComponent = () => {
                 width={400}
                 height={500}
                 className="w-1/3 rounded-lg shadow-md object-cover"
+                priority={false}
               />
               <Image
                 src="/aboutus_middle.png"
@@ -155,16 +156,32 @@ const AboutUsComponent = () => {
               />
             </div>
 
-            {/* Copy */}
-            <div className=" lg:text-left">
-              <h2 className="text-green-600 text-2xl text-justify sm:text-3xl font-bold dark:text-white">
+            <div className="relative lg:text-left">
+              <Image
+                src="/doodle3.png"
+                alt=""
+                width={220}
+                height={220}
+                aria-hidden="true"
+                className="
+                  pointer-events-none select-none
+                  absolute
+                  -top-10 sm:-top-12 md:-top-14
+                  right-20 md:right-40
+                  w-0 sm:w-0 lg:w-32
+                  rotate-[-12deg]
+                  opacity-90 dark:opacity-80
+                "
+              />
+
+              <h2 className="text-green-600 text-2xl sm:text-3xl font-bold dark:text-white relative z-10 pt-10 sm:pt-12">
                 About US
               </h2>
-              <p className="text-base sm:text-lg leading-relaxed text-gray-800 dark:text-gray-300">
+              <p className="mt-2 text-base sm:text-lg leading-relaxed text-gray-800 dark:text-gray-300 max-w-prose">
                 Concept Softworks is a software company, we develop custom built
                 software for clients – covering everything from financial
-                institutions & medical companies all the way to tech companies
-                and government organizations.
+                institutions &amp; medical companies all the way to tech
+                companies and government organizations.
               </p>
             </div>
           </div>
@@ -173,6 +190,7 @@ const AboutUsComponent = () => {
     </div>
   );
 };
+
 
 const OurTeam = () => {
   const teamMembers = [
@@ -362,14 +380,14 @@ const ContactUs = () => {
   "
         />
 
-         <Image
-    src="/doodle1.png"
-    alt=""
-    aria-hidden="true"
-    priority={false}
-    width={200}
-    height={200}
-    className="
+        <Image
+          src="/doodle1.png"
+          alt=""
+          aria-hidden="true"
+          priority={false}
+          width={200}
+          height={200}
+          className="
       pointer-events-none select-none
       absolute z-0
       right-30 
@@ -379,7 +397,7 @@ const ContactUs = () => {
       min-w-[150px]
       opacity-90
     "
-  />
+        />
       </div>
 
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
