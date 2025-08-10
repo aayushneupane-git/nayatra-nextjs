@@ -25,7 +25,7 @@ const HeroComponent = () => {
   return (
     <>
       <section
-        className="relative min-h-[60svh] sm:min-h-[70svh] md:h-[90vh] bg-cover bg-center text-white"
+        className="relative min-h-[60svh] sm:min-h-[80svh] h-[80vh] overflow-hidden md:h-[100vh] bg-cover bg-center text-white"
         style={{ backgroundImage: "url('/bgimage.avif')" }}
       >
         {/* Overlay: full on mobile, left-half on md+ */}
