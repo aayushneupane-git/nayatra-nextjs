@@ -8,7 +8,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 export default function MyTeam() {
   const scrollerRef = useRef(null);
 
-  // ✅ Normalized values so all images align
+  // Normalized values so all images align
   const members = [
     {
       name: "Rahul",
@@ -43,6 +43,7 @@ export default function MyTeam() {
 
   return (
     <section className="relative py-12 bg-white dark:bg-black">
+      {/* Page doodle on the right (not the per-card ones) */}
       <Image
         src="/doodle2.png"
         alt=""
@@ -56,6 +57,7 @@ export default function MyTeam() {
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-green-600 text-3xl font-bold">Our Team</h2>
 
+          {/* Mobile arrows */}
           <div className="flex gap-3 md:hidden">
             <button
               onClick={() => scrollByCard("left")}
@@ -81,7 +83,13 @@ export default function MyTeam() {
             className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-thin"
           >
             {members.map((m, i) => (
-              <TeamCard key={i} member={m} className="min-w-[85%] xs:min-w-[70%] sm:min-w-[55%]" data-card />
+              <TeamCard
+                key={i}
+                member={m}
+                index={i}
+                className="min-w-[85%] xs:min-w-[70%] sm:min-w-[55%]"
+                data-card
+              />
             ))}
           </div>
         </div>
@@ -89,7 +97,7 @@ export default function MyTeam() {
         {/* Desktop grid */}
         <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {members.map((m, i) => (
-            <TeamCard key={i} member={m} />
+            <TeamCard key={i} member={m} index={i} />
           ))}
         </div>
       </div>
@@ -97,20 +105,23 @@ export default function MyTeam() {
   );
 }
 
-function TeamCard({ member, className = "", ...rest }) {
+function TeamCard({ member, index = 0, className = "", ...rest }) {
   const {
     name, role, img,
     scale = 1.12, x = 0, y = 0,
     bgW = 0.76, bgH = 0.56, bgX = 0, bgY = 0,
   } = member;
 
-  const CARD_H = 400;        
-  const FOOTER_H = 96;      
-  const GUTTER = 16;         
-  const PANEL_AREA = CARD_H - (FOOTER_H + GUTTER * 2); 
+  const CARD_H = 400;
+  const FOOTER_H = 96;
+  const GUTTER = 16;
+  const PANEL_AREA = CARD_H - (FOOTER_H + GUTTER * 2);
 
-  const panelHeightPx = Math.max(180, Math.round(PANEL_AREA * bgH)); 
+  const panelHeightPx = Math.max(180, Math.round(PANEL_AREA * bgH));
   const panelTopPx = 8 + bgY;
+
+  const doodles = ["/doodle4.png", "/doodle5.png", "/doodle6.png"];
+  const doodleSrc = doodles[index % doodles.length];
 
   return (
     <article
@@ -118,7 +129,6 @@ function TeamCard({ member, className = "", ...rest }) {
       className={`relative rounded-[22px] shadow-lg overflow-hidden bg-white dark:bg-zinc-900 ${className}`}
       style={{ height: CARD_H }}
     >
-      {/* Green background panel */}
       <div
         className="absolute left-1/2 -translate-x-1/2 rounded-[22px] bg-[#15A34A]"
         style={{
@@ -128,26 +138,28 @@ function TeamCard({ member, className = "", ...rest }) {
           borderRadius: 18,
         }}
       />
-
       <div
         className="absolute left-1/2 -translate-x-1/2 bg-[#15A34A]"
         style={{
           width: `${bgW * 100}%`,
-          height: 24,                              
-          top: `${panelTopPx + panelHeightPx - 12}px`, 
+          height: 24,
+          top: `${panelTopPx + panelHeightPx - 12}px`,
           filter: "blur(6px)",
           opacity: 0.8,
         }}
       />
 
-      {/* Decorative lights */}
       <div className="absolute inset-0 pointer-events-none select-none">
-        <div className="absolute left-[8%] top-6 w-28 h-14 rounded-full bg-white/16 blur-[2px]" />
-        <div className="absolute right-[12%] top-10 w-9 h-16 rounded-full bg-white/18 rotate-12" />
-        <div className="absolute right-[16%] top-28 w-6 h-12 rounded-full bg-white/18 -rotate-12" />
+        <Image
+          src={doodleSrc}
+          alt=""
+          width={120}
+          height={120}
+          aria-hidden="true"
+          className="absolute left-[8%] top-6 w-20 h-auto"
+        />
       </div>
 
-      {/* Image with bottom curve fade */}
       <div
         className="absolute left-1/2 -translate-x-1/2 z-10"
         style={{ bottom: FOOTER_H }}
@@ -192,7 +204,7 @@ function TeamCard({ member, className = "", ...rest }) {
             className="grayscale object-contain"
             style={{
               transform: `translate(${x}px, ${y}px) scale(${scale})`,
-              transformOrigin: "center bottom", // ✅ keeps bottom aligned
+              transformOrigin: "center bottom",
               display: "block",
             }}
             draggable={false}
