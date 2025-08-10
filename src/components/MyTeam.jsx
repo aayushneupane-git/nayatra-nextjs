@@ -38,43 +38,43 @@ export default function MyTeam() {
   };
 
   return (
-    <section className="py-12 bg-white dark:bg-black">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="flex items-end justify-between gap-4 mb-6">
-          <h2 className="text-green-600 text-2xl sm:text-3xl font-bold dark:text-white">
-            Our Team
-          </h2>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 bg-white dark:bg-black">
+        <div className="max-w-7xl mx-auto ">
+          <div className="flex items-end justify-between gap-4 mb-6">
+            <h2 className="text-green-600 text-2xl sm:text-3xl font-bold dark:text-white">
+              Our Team
+            </h2>
+          </div>
 
-       
-        </div>
-
-        {/*
+          {/*
           Mobile/Tablet: horizontal scroll with snap
           Desktop (lg+): 3-column grid, no scroll
         */}
-        <div className="lg:hidden -mx-4 px-4">
-          <div
-            ref={scrollerRef}
-            className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-thin"
-          >
+          <div className="lg:hidden -mx-4 px-4">
+            <div
+              ref={scrollerRef}
+              className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-thin"
+            >
+              {members.map((m, idx) => (
+                <TeamCard
+                  key={idx}
+                  member={m}
+                  className="min-w-[85%] xs:min-w-[70%] sm:min-w-[55%]"
+                  data-card
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {members.map((m, idx) => (
-              <TeamCard
-                key={idx}
-                member={m}
-                className="min-w-[85%] xs:min-w-[70%] sm:min-w-[55%]"
-                data-card
-              />
+              <TeamCard key={idx} member={m} />
             ))}
           </div>
         </div>
-
-        <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {members.map((m, idx) => (
-            <TeamCard key={idx} member={m} />
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
 

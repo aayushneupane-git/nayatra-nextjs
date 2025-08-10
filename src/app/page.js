@@ -17,7 +17,6 @@ export default function Home() {
       <MyTeam />
       <Services />
       <ContactUs />
-      <Footer />
     </div>
   );
 }
@@ -36,7 +35,7 @@ const HeroComponent = () => {
         <div className="relative z-10 flex items-center h-full">
           <div className="container mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <h1 className="text-[1.9rem] leading-tight sm:text-5xl md:text-6xl font-bold max-w-[22ch]">
-              Let’s make <span className="text-green-400">{'{ }'}</span>
+              Let’s make <span className="text-green-400">{"{ }"}</span>
               <br />
               software together!
             </h1>
@@ -63,55 +62,59 @@ const HeroComponent = () => {
       </section>
 
       {/* Mobile logos (stacked below section so they don't steal height) */}
-<div className="md:hidden px-4 pt-4">
-  <div className="bg-white/95 dark:bg-zinc-900/95 text-black dark:text-white rounded-2xl w-full max-w-7xl shadow-lg overflow-hidden">
-    <div className="relative h-20"> {/* fixed height for the strip */}
-      <ul className="flex h-full animate-logo-marquee will-change-transform hover:[animation-play-state:paused] [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-        {/* Duplicate list for seamless loop */}
-        {[...logoSrcs, ...logoSrcs].map((src, i) => (
-          <li
-            key={`logo-${i}`}
-            className="basis-1/3 shrink-0 flex items-center justify-center px-3"
-            aria-hidden={i >= logoSrcs.length ? true : undefined}
-          >
-            <Image
-              src={src}
-              alt={`Logo ${i % logoSrcs.length + 1}`}
-              width={56}
-              height={56}
-              className="w-14 h-14 object-contain"
-              draggable={false}
-            />
-          </li>
-        ))}
-      </ul>
-    </div>
-  </div>
+      <div className="md:hidden px-4 pt-4">
+        <div className="bg-white/95 dark:bg-zinc-900/95 text-black dark:text-white rounded-2xl w-full max-w-7xl shadow-lg overflow-hidden">
+          <div className="relative h-20">
+            {" "}
+            {/* fixed height for the strip */}
+            <ul className="flex h-full animate-logo-marquee will-change-transform hover:[animation-play-state:paused] [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+              {/* Duplicate list for seamless loop */}
+              {[...logoSrcs, ...logoSrcs].map((src, i) => (
+                <li
+                  key={`logo-${i}`}
+                  className="basis-1/3 shrink-0 flex items-center justify-center px-3"
+                  aria-hidden={i >= logoSrcs.length ? true : undefined}
+                >
+                  <Image
+                    src={src}
+                    alt={`Logo ${(i % logoSrcs.length) + 1}`}
+                    width={56}
+                    height={56}
+                    className="w-14 h-14 object-contain"
+                    draggable={false}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
 
-  {/* styled-jsx for the marquee (scoped to this component) */}
-  <style jsx>{`
-    @keyframes logo-marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    /* duration = slower = smoother; tweak 25s → 35s to go slower */
-    .animate-logo-marquee {
-      animation: logo-marquee 25s linear infinite;
-    }
-    /* Respect reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-      .animate-logo-marquee {
-        animation: none !important;
-        transform: translateX(0) !important;
-      }
-    }
-  `}</style>
-</div>
-
+        {/* styled-jsx for the marquee (scoped to this component) */}
+        <style jsx>{`
+          @keyframes logo-marquee {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
+          }
+          /* duration = slower = smoother; tweak 25s → 35s to go slower */
+          .animate-logo-marquee {
+            animation: logo-marquee 25s linear infinite;
+          }
+          /* Respect reduced motion */
+          @media (prefers-reduced-motion: reduce) {
+            .animate-logo-marquee {
+              animation: none !important;
+              transform: translateX(0) !important;
+            }
+          }
+        `}</style>
+      </div>
     </>
   );
 };
-
 
 const logoSrcs = [
   "https://www.thecloroxcompany.com/wp-content/uploads/2022/08/TCC_Stacked_1200x1200.png",
@@ -123,47 +126,51 @@ const logoSrcs = [
 
 const AboutUsComponent = () => {
   return (
-    <section className="py-16 sm:py-20 bg-white dark:bg-black text-black dark:text-white">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Images */}
-          <div className="flex gap-3 sm:gap-4 justify-center">
-            <Image
-              src="/aboutus_left.png"
-              alt="Team collaboration left"
-              width={400}
-              height={500}
-              className="w-1/3 rounded-lg shadow-md object-cover"
-            />
-            <Image
-              src="/aboutus_middle.png"
-              alt="Team collaboration middle"
-              width={400}
-              height={500}
-              className="w-1/3 rounded-lg shadow-md object-cover"
-            />
-            <Image
-              src="/aboutus_right.png"
-              alt="Team collaboration right"
-              width={400}
-              height={500}
-              className="w-1/3 rounded-lg shadow-md object-cover"
-            />
-          </div>
+    <div className="flex items-center justify-center max-w-7px">
+      <section className="py-16 sm:py-20 max-w-7xl bg-white dark:bg-black text-black dark:text-white">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Images */}
+            <div className="flex gap-3 sm:gap-4 justify-center">
+              <Image
+                src="/aboutus_left.png"
+                alt="Team collaboration left"
+                width={400}
+                height={500}
+                className="w-1/3 rounded-lg shadow-md object-cover"
+              />
+              <Image
+                src="/aboutus_middle.png"
+                alt="Team collaboration middle"
+                width={400}
+                height={500}
+                className="w-1/3 rounded-lg shadow-md object-cover"
+              />
+              <Image
+                src="/aboutus_right.png"
+                alt="Team collaboration right"
+                width={400}
+                height={500}
+                className="w-1/3 rounded-lg shadow-md object-cover"
+              />
+            </div>
 
-          {/* Copy */}
-          <div className="text-center lg:text-left">
-            <h2 className="text-3xl sm:text-4xl font-bold text-green-600 mb-4 sm:mb-6 dark:text-white">About Us</h2>
-            <p className="text-base sm:text-lg leading-relaxed text-gray-800 dark:text-gray-300">
-              Concept Softworks is a software company, we develop custom built
-              software for clients – covering everything from financial
-              institutions & medical companies all the way to tech companies and
-              government organizations.
-            </p>
+            {/* Copy */}
+            <div className=" lg:text-left">
+              <h2 className="text-green-600 text-2xl text-justify sm:text-3xl font-bold dark:text-white">
+              About US
+            </h2>
+              <p className="text-base sm:text-lg leading-relaxed text-gray-800 dark:text-gray-300">
+                Concept Softworks is a software company, we develop custom built
+                software for clients – covering everything from financial
+                institutions & medical companies all the way to tech companies
+                and government organizations.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 
@@ -208,7 +215,9 @@ const OurTeam = () => {
     <section className="py-16 sm:py-20 bg-white dark:bg-black text-black dark:text-white">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-10">
-          <h2 className="text-3xl sm:text-4xl font-bold text-green-600">Our Team</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-green-600">
+            Our Team
+          </h2>
           <p className="mt-3 sm:mt-4 text-gray-600 dark:text-gray-300">
             The minds that bring our vision to life.
           </p>
@@ -227,7 +236,9 @@ const OurTeam = () => {
                 width={112}
                 height={112}
               />
-              <h3 className="text-lg sm:text-xl font-bold mb-1">{member.intro}</h3>
+              <h3 className="text-lg sm:text-xl font-bold mb-1">
+                {member.intro}
+              </h3>
               <p className="text-sm sm:text-base font-medium">{member.name}</p>
               <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-4">
                 {member.role}
@@ -323,7 +334,9 @@ const ContactUs = () => {
           {/* Left side - Contact form */}
           <div className="flex flex-col gap-6">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-green-600 dark:text-white">Contact Us</h2>
+              <h2 className="text-green-600 text-2xl sm:text-3xl font-bold dark:text-white">
+                Contact US
+              </h2>
               <h3 className="text-lg sm:text-xl">What can we do for you?</h3>
             </div>
 
@@ -346,7 +359,9 @@ const ContactUs = () => {
 
             <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
               <div className="flex flex-col">
-                <label htmlFor="name" className="mb-1">Name</label>
+                <label htmlFor="name" className="mb-1">
+                  Name
+                </label>
                 <input
                   type="text"
                   id="name"
@@ -357,7 +372,9 @@ const ContactUs = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <label htmlFor="email" className="mb-1">Email</label>
+                <label htmlFor="email" className="mb-1">
+                  Email
+                </label>
                 <input
                   type="email"
                   id="email"
@@ -368,7 +385,9 @@ const ContactUs = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <label htmlFor="details" className="mb-1">Project details</label>
+                <label htmlFor="details" className="mb-1">
+                  Project details
+                </label>
                 <textarea
                   id="details"
                   rows={4}
@@ -390,11 +409,15 @@ const ContactUs = () => {
           {/* Right side - Contact info */}
           <div className="flex flex-col justify-center gap-6">
             <div>
-              <h3 className="text-sm font-bold text-gray-500 mb-1 sm:mb-2 uppercase tracking-wide">Phone</h3>
+              <h3 className="text-sm font-bold text-gray-500 mb-1 sm:mb-2 uppercase tracking-wide">
+                Phone
+              </h3>
               <p className="text-lg sm:text-xl">+1 (833) 562-3112</p>
             </div>
             <div>
-              <h3 className="text-sm font-bold text-gray-500 mb-1 sm:mb-2 uppercase tracking-wide">Email</h3>
+              <h3 className="text-sm font-bold text-gray-500 mb-1 sm:mb-2 uppercase tracking-wide">
+                Email
+              </h3>
               <p className="text-lg sm:text-xl">Hello@conceptsoftworks.com</p>
             </div>
           </div>

@@ -50,7 +50,10 @@ const services = [
 ];
 
 export default function Services() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, slidesToScroll: 1 });
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: false,
+    slidesToScroll: 1,
+  });
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(true);
 
@@ -67,60 +70,64 @@ export default function Services() {
   }, [emblaApi, onSelect]);
 
   return (
-    <section className="bg-white dark:bg-gray-900 py-20 px-6">
-      <div className="w-full flex justify-center mb-10">
-        <div className="md:w-[70%] text-left">
-          <h2 className="text-4xl font-bold text-green-600 dark:text-white ">Our Services</h2>
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto">
-        {/* Mobile: stacked layout */}
-        <div className="block md:hidden space-y-8">
-          {services.map((service, i) => (
-            <ServiceCard key={i} service={service} i={i} />
-          ))}
+    <div className="max-w-7xl mx-auto  sm:px-6 lg:px-8 px-4 ">
+      <section className="py-16 sm:py-20  dark:bg-black text-black dark:text-white">
+        <div className="w-full flex justify-center mb-10">
+          <div className="w-full text-left">
+             <h2 className="text-green-600 text-2xl sm:text-3xl font-bold dark:text-white">
+              Our Services
+            </h2>
+          </div>
         </div>
 
-        {/* Desktop: Embla Carousel */}
-        <div className="hidden md:block relative">
-          {/* Arrows */}
-          <div className="absolute -left-12 top-1/2 -translate-y-1/2 z-10">
-            <button
-              onClick={() => emblaApi && emblaApi.scrollPrev()}
-              disabled={!canScrollPrev}
-              className="p-2 text-2xl bg-gray-200 dark:bg-gray-700 rounded-full disabled:opacity-30"
-            >
-              <FiChevronLeft />
-            </button>
+        <div className="max-w-7xl mx-auto">
+          {/* Mobile: stacked layout */}
+          <div className="block md:hidden space-y-8">
+            {services.map((service, i) => (
+              <ServiceCard key={i} service={service} i={i} />
+            ))}
           </div>
 
-          <div className="absolute -right-12 top-1/2 -translate-y-1/2 z-10">
-            <button
-              onClick={() => emblaApi && emblaApi.scrollNext()}
-              disabled={!canScrollNext}
-              className="p-2 text-2xl bg-gray-200 dark:bg-gray-700 rounded-full disabled:opacity-30"
-            >
-              <FiChevronRight />
-            </button>
-          </div>
+          {/* Desktop: Embla Carousel */}
+          <div className="hidden md:block relative">
+            {/* Arrows */}
+            <div className="absolute -left-12 top-1/2 -translate-y-1/2 z-10">
+              <button
+                onClick={() => emblaApi && emblaApi.scrollPrev()}
+                disabled={!canScrollPrev}
+                className="p-2 text-2xl bg-gray-200 dark:bg-gray-700 rounded-full disabled:opacity-30"
+              >
+                <FiChevronLeft />
+              </button>
+            </div>
 
-          {/* Embla viewport */}
-          <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex">
-              {services.map((service, i) => (
-                <div
-                  key={i}
-                  className="flex-[0_0_33.3333%] max-w-[33.3333%] px-2"
-                >
-                  <ServiceCard service={service} i={i} />
-                </div>
-              ))}
+            <div className="absolute -right-12 top-1/2 -translate-y-1/2 z-10">
+              <button
+                onClick={() => emblaApi && emblaApi.scrollNext()}
+                disabled={!canScrollNext}
+                className="p-2 text-2xl bg-gray-200 dark:bg-gray-700 rounded-full disabled:opacity-30"
+              >
+                <FiChevronRight />
+              </button>
+            </div>
+
+            {/* Embla viewport */}
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex">
+                {services.map((service, i) => (
+                  <div
+                    key={i}
+                    className="flex-[0_0_33.3333%] max-w-[33.3333%] px-2"
+                  >
+                    <ServiceCard service={service} i={i} />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
 
@@ -139,7 +146,7 @@ function ServiceCard({ service, i }) {
         width={1200}
         height={600}
         className="w-full h-60 object-cover"
-        unoptimized={service.image.includes('testgrid.io')}
+        unoptimized={service.image.includes("testgrid.io")}
       />
 
       {/* Badges */}
