@@ -8,6 +8,7 @@ import { useState } from "react";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Projects from "@/components/Projects";
 
 export default function Home() {
   const fadeUp = {
@@ -34,18 +35,18 @@ export default function Home() {
         <AboutUsComponent />
       </motion.div>
       {/* <OurTeam /> */}
-
+      {/* <Services /> */}
       <motion.div
         variants={fadeUp}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <MyTeam />
+        <Projects fadeUp={fadeUp} />
       </motion.div>
 
-     
-        <Services />
+      <MyTeam />
+
       <motion.div
         variants={fadeUp}
         initial="hidden"
@@ -63,7 +64,7 @@ const HeroComponent = () => {
     <>
       <section
         className="relative min-h-[60svh] sm:min-h-[80svh] h-[80vh] overflow-hidden md:h-[100vh] bg-cover bg-center text-white"
-        style={{ backgroundImage: "url('/bgimage.avif')" }}
+        style={{ backgroundImage: "url('/bgimage.jpg')" }}
       >
         {/* Overlay: full on mobile, left-half on md+ */}
         <div className="absolute inset-0 md:inset-y-0 md:left-0 md:w-1/2 bg-black/60" />

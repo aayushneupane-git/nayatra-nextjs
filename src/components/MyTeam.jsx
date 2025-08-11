@@ -58,7 +58,10 @@ export default function MyTeam() {
   };
 
   return (
-    <section className="relative py-12 bg-white dark:bg-black">
+    <section
+      className="relative py-12 bg-white dark:bg-black"
+     
+    >
       {/* Page doodle on the right (not the per-card ones) */}
       <Image
         src="/doodle2.png"
