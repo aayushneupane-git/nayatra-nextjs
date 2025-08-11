@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  metadataBase: new URL("https://nepsoft.org"), // ensures relative URLs become absolute
+  metadataBase: new URL("https://nepsoft.org"),
   title: "NepSoft",
   description: "This is where the future of software development",
   keywords: [
@@ -28,7 +28,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "/LOGO.png",
+        url: "/logo3.png", // updated here
         width: 1200,
         height: 630,
         alt: "NepSoft",
@@ -40,15 +40,15 @@ export const metadata = {
     card: "summary_large_image",
     title: "NepSoft",
     description: "This is where the future of software development",
-    images: ["/LOGO.png"],
+    images: ["/logo3.png"], // updated here
   },
 
   icons: {
     icon: [
-      { url: "/logo_white.png", sizes: "any" },
+      { url: "/logo3.png", sizes: "any" }, // updated here
     ],
     apple: [
-      { url: "/logo_white.png", sizes: "180x180" }, 
+      { url: "/logo3.png", sizes: "180x180" }, // updated here
     ],
   },
 };
