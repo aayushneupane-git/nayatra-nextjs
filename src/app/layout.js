@@ -63,7 +63,22 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-  
+      <head>
+        <link rel="icon" href="/logo_white.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/logo_white.png" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/logo_white.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/logo_white.png"
+        />
+      </head>
       <body className="font-sans">
         <link
           href="https://fonts.googleapis.com/css2?family=Andada+Pro:ital,wght@0,400..840;1,400..840&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
