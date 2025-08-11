@@ -28,7 +28,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "/logo3.png", // updated here
+        url: "https://nepsoftsolution.com/logo3.png", // updated here
         width: 1200,
         height: 630,
         alt: "NepSoft",
@@ -40,15 +40,15 @@ export const metadata = {
     card: "summary_large_image",
     title: "NepSoft",
     description: "This is where the future of software development",
-    images: ["/logo3.png"], // updated here
+    images: ["https://nepsoftsolution.com/logo3.png"], // updated here
   },
 
   icons: {
     icon: [
-      { url: "/logo3.png", sizes: "any" }, // updated here
+      { url: "https://nepsoftsolution.com/logo3.png", sizes: "any" }, // updated here
     ],
     apple: [
-      { url: "/logo3.png", sizes: "180x180" }, // updated here
+      { url: "https://nepsoftsolution.com/logo3.png", sizes: "180x180" }, // updated here
     ],
   },
 };
