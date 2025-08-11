@@ -8,9 +8,9 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   metadataBase: new URL("https://nepsoftsolutions.com"),
-  title: "NepSoft Solutions | Web & App Development in Nepal",
+  title: "NepSoft Solutions | Expert Web & App Development in Nepal",
   description:
-    "NepSoft Solutions builds SEO-optimized websites, mobile apps, and AI-powered software. Expert in MERN stack, ERP systems, and cloud solutions. Let's grow your business.",
+    "NepSoft Solutions offers SEO-optimized websites, mobile apps, AI-powered software, and cloud solutions. Expert MERN stack and ERP development to grow your business.",
   keywords: [
     "web development company Nepal",
     "website design Nepal",
@@ -26,14 +26,17 @@ export const metadata = {
     "business automation software",
     "best software company Nepal",
     "top web development Nepal",
+    "software outsourcing Nepal",
+    "digital transformation Nepal",
   ],
+  canonical: "https://nepsoftsolutions.com",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://nepsoftsolutions.com",
-    title: "NepSoft Solutions | Web & App Development in Nepal",
+    title: "NepSoft Solutions | Expert Web & App Development in Nepal",
     description:
-      "SEO-optimized websites, mobile apps, and AI solutions from Nepal's top software development company.",
+      "Top Nepal-based software company offering SEO-friendly websites, mobile apps, AI software, and cloud services tailored for your business growth.",
     siteName: "NepSoft Solutions",
     images: [
       {
@@ -46,9 +49,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "NepSoft Solutions | Web & App Development in Nepal",
+    title: "NepSoft Solutions | Expert Web & App Development in Nepal",
     description:
-      "Building SEO-optimized websites, apps, and software for your business success.",
+      "NepSoft Solutions builds SEO-optimized websites, mobile apps, and AI-powered software to accelerate your business success.",
     images: [ogImage.src],
   },
   icons: {
@@ -60,43 +63,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        {/* Schema Markup for SEO Rich Snippets */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "NepSoft Solutions",
-              url: "https://nepsoftsolutions.com",
-              logo: "https://nepsoftsolutions.com/logo.png",
-              description:
-                "NepSoft Solutions builds SEO-optimized websites, mobile apps, and AI-powered software.",
-              contactPoint: {
-                "@type": "ContactPoint",
-                telephone: "+977-XXXXXXXXXX",
-                contactType: "Customer Service",
-                areaServed: "NP",
-                availableLanguage: ["English", "Nepali"],
-              },
-              sameAs: [
-                "https://www.facebook.com/nepsoftsolutions",
-                "https://www.linkedin.com/company/nepsoftsolutions",
-              ],
-            }),
-          }}
-        />
-      </head>
+  
       <body className="font-sans">
         <link
           href="https://fonts.googleapis.com/css2?family=Andada+Pro:ital,wght@0,400..840;1,400..840&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
           rel="stylesheet"
         />
-        <div>
-          <Navbar />
-        </div>
-
+        <Navbar />
         {children}
         <Footer />
       </body>
