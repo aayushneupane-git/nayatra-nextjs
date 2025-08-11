@@ -157,7 +157,7 @@ const HeroComponent = () => {
 const logoSrcs = [
   "/client2.png",
   "/title_logo.png",
-  "/logolux.jpg",
+  "/logolux.png",
   "/client1.png",
   "https://www.thecloroxcompany.com/wp-content/uploads/2022/08/TCC_Stacked_1200x1200.png"
 
