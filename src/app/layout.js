@@ -1,52 +1,69 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { Providers } from "./providers";
 import Navbar from "@/components/Navbar";
-import { ThemeProvider } from "next-themes";
+import ogImage from "../public/logo3.png";
 import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  metadataBase: new URL("https://nepsoft.org"), // ensures relative URLs become absolute
-  title: "NepSoft",
-  description: "This is where the future of software development",
+  metadataBase: new URL("https://nepsoftsolutions.com"),
+  title: "NepSoft Solutions | Future of Software Development",
+  description:
+    "NepSoft Solutions builds modern, SEO-friendly websites, web apps, and innovative tech solutions. We specialize in web development, mobile applications, AI-powered software, and business automation.",
   keywords: [
-    "software",
-    "development",
-    "agency",
-    "web development",
-    "mobile apps",
+    "NepSoft Solutions",
+    "website development",
+    "web app development",
+    "custom software development",
+    "mobile app development",
+    "React development",
+    "Next.js development",
+    "Node.js backend",
+    "MERN stack development",
+    "e-commerce development",
+    "UI/UX design",
+    "SEO optimization",
+    "cloud-based solutions",
+    "AI-powered applications",
+    "ERP development",
+    "business automation",
+    "IT consulting",
+    "custom web solutions",
+    "software company Nepal",
+    "full stack developer",
+    "web design",
+    "digital transformation",
+    "app development company",
+    "best software company",
+    "modern website design",
   ],
-  authors: [{ name: "NepSoft", url: "https://nepsoft.org" }],
-  creator: "NepSoft",
-
   openGraph: {
-    title: "NepSoft",
-    description: "This is where the future of software development",
-    url: "https://nepsoft.org",
-    siteName: "NepSoft",
     type: "website",
+    url: "https://nepsoftsolutions.com",
+    title: "NepSoft Solutions | Future of Software Development",
+    description:
+      "We create high-quality, scalable websites and applications tailored to your business needs using cutting-edge technologies.",
     images: [
       {
-        url: "/LOGO.png",
+        url: ogImage.src,
         width: 1200,
         height: 630,
-        alt: "NepSoft",
       },
     ],
   },
-
   twitter: {
     card: "summary_large_image",
-    title: "NepSoft",
-    description: "This is where the future of software development",
-    images: ["/LOGO.png"],
-  },
-
-  icons: {
-    icon: [{ url: "/logo_white.png", sizes: "any" }],
-    apple: [{ url: "/logo_white.png", sizes: "180x180" }],
+    title: "NepSoft Solutions | Future of Software Development",
+    description:
+      "Building SEO-optimized websites, apps, and software solutions to help your business grow.",
+    images: [
+      {
+        url: ogImage.src,
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
 };
 export default function RootLayout({ children }) {
