@@ -13,8 +13,8 @@ const PROJECTS = [
     image: "/work1.png",
   },
   {
-    title: "Lux Travellerzz",
-    company: "Lux Travellerzz",
+    title: "Lux Travellerz",
+    company: "Lux Travels",
     website: "https://luxtravelerzz.com/",
     url: "https://luxtravelerzz.com/",
     image: "/work2.png",
@@ -60,6 +60,8 @@ export default function Projects() {
               <Link
                 href={p.url}
                 prefetch={false}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex overflow-hidden rounded-[1.5rem] md:h-64 bg-white/5 ring-1 ring-black/10 shadow-[0_12px_40px_-12px_rgba(0,0,0,0.35)] focus:outline-none focus:ring-2 focus:ring-white/80"
               >
                 <figure className="relative w-full aspect-[5/4]">
@@ -95,19 +97,32 @@ export default function Projects() {
                       lg:group-hover:opacity-100 lg:group-hover:translate-y-0
                     "
                   >
-                    <div className="rounded-xl bg-white/95 backdrop-blur-md ring-1 ring-black/10">
-                      <div className="p-4 text-gray-900">
-                        <div className="flex items-start justify-between gap-3">
-                          <div>
-                            <h3 className="text-base font-semibold leading-tight">
-                              {p.company}
-                            </h3>
-                            <p className="text-xs text-gray-600">{p.website}</p>
+                    <div className="text-white">
+                      <div className="flex items-center justify-between gap-3">
+                        <div>
+                          <h3 className="text-base font-semibold leading-tight">
+                            {p.company}
+                          </h3>
+                          <div className="mt-1 flex items-center gap-2">
+                            <span
+                              className="inline-block h-2 w-2 rounded-full bg-green-500"
+                              aria-hidden="true"
+                            />
+                            <span className="text-xs text-white/90">
+                              All systems operational
+                            </span>
                           </div>
-                          <span className="inline-flex rounded-full px-2.5 py-1 text-xs bg-gray-900 text-white/90">
-                            View
-                          </span>
                         </div>
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            window.open(p.url, "_blank", "noopener,noreferrer");
+                          }}
+                          className="inline-flex items-center rounded-full px-3.5 py-1.5 text-sm font-medium bg-gray-900 text-white shadow-md hover:shadow-lg hover:bg-gray-800 transition-all duration-200 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-white/60"
+                        >
+                          View
+                        </button>
                       </div>
                     </div>
                   </div>
