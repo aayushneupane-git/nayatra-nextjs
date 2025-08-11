@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  metadataBase: new URL("https://nepsoftsolutions.com"),
+  metadataBase: new URL("https://nepsoft.org"), // ensures relative URLs become absolute
   title: "NepSoft",
   description: "This is where the future of software development",
   keywords: [
@@ -17,21 +17,21 @@ export const metadata = {
     "web development",
     "mobile apps",
   ],
-  authors: [{ name: "NepSoft", url: "https://nepsoftsolutions.com" }],
+  authors: [{ name: "NepSoft", url: "https://nepsoft.org" }],
   creator: "NepSoft",
 
   openGraph: {
     title: "NepSoft",
     description: "This is where the future of software development",
-    url: "https://nepsoftsolutions.com",
+    url: "https://nepsoft.org",
     siteName: "NepSoft",
     type: "website",
     images: [
       {
-        url: "https://nepsoftsolution.com/logo3.png", // keep your logo image
+        url: "/LOGO.png", 
         width: 1200,
         height: 630,
-        alt: "NepSoft Logo",
+        alt: "NepSoft",
       },
     ],
   },
@@ -40,12 +40,16 @@ export const metadata = {
     card: "summary_large_image",
     title: "NepSoft",
     description: "This is where the future of software development",
-    images: ["https://nepsoftsolution.com/logo3.png"],
+    images: ["/LOGO.png"],
   },
 
   icons: {
-    icon: "https://nepsoftsolution.com/logo3.png",
-    apple: "https://nepsoftsolution.com/logo3.png",
+    icon: [
+      { url: "/logo_white.png", sizes: "any" },
+    ],
+    apple: [
+      { url: "/logo_white.png", sizes: "180x180" }, 
+    ],
   },
 };
 
