@@ -2,51 +2,43 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { BsTwitterX } from "react-icons/bs";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
-import { motion } from "framer-motion";
 
 export default function MyTeam() {
   const scrollerRef = useRef(null);
 
-  // Normalized values so all images align
   const members = [
-  
     {
       name: "Shishir Paudel",
       role: "Team Lead",
       img: "/shishir.png",
+      linkedin: "https://www.linkedin.com/in/shishir-paudel-58811b209/", // change to real profile
+      twitter: "https://twitter.com/shishirpaudel", // change to real profile
       scale: 1.2,
-      x: 0,
-      y: 0,
       bgW: 0.74,
       bgH: 0.54,
-      bgX: 0,
-      bgY: 0,
     },
-      {
+    {
       name: "Rahul",
       role: "Full Stack Developer",
       img: "/rahul.png",
+      linkedin: "https://www.linkedin.com/in/rashres", // change
+      twitter: "https://twitter.com/rahul", // change
       scale: 1.2,
-      x: 0,
-      y: 0,
       bgW: 0.78,
       bgH: 0.56,
-      bgX: 0,
-      bgY: 0,
     },
     {
       name: "Aayush",
       role: "DevOps Lead",
       img: "/ayush.png",
+      linkedin: "https://www.linkedin.com/in/aaneupane", // change
+      twitter: "https://twitter.com/aayush", // change
       scale: 1.2,
-      x: 0,
-      y: 0,
       bgW: 0.76,
       bgH: 0.56,
-      bgX: 0,
-      bgY: 0,
     },
   ];
 
@@ -59,11 +51,7 @@ export default function MyTeam() {
   };
 
   return (
-    <section
-      className="relative py-12 bg-white dark:bg-black"
-     
-    >
-      {/* Page doodle on the right (not the per-card ones) */}
+    <section className="relative py-12 bg-white dark:bg-black">
       <Image
         src="/doodle2.png"
         alt=""
@@ -77,7 +65,6 @@ export default function MyTeam() {
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-green-600 text-3xl font-bold">Our Team</h2>
 
-          {/* Mobile arrows */}
           <div className="flex gap-3 md:hidden">
             <button
               onClick={() => scrollByCard("left")}
@@ -96,7 +83,7 @@ export default function MyTeam() {
           </div>
         </div>
 
-        {/* Mobile horizontal scroll */}
+        {/* Mobile scroll */}
         <div className="md:hidden -mx-4 px-4">
           <div
             ref={scrollerRef}
@@ -130,6 +117,8 @@ function TeamCard({ member, index = 0, className = "", ...rest }) {
     name,
     role,
     img,
+    linkedin,
+    twitter,
     scale = 1.12,
     x = 0,
     y = 0,
@@ -143,11 +132,10 @@ function TeamCard({ member, index = 0, className = "", ...rest }) {
   const FOOTER_H = 96;
   const GUTTER = 16;
   const PANEL_AREA = CARD_H - (FOOTER_H + GUTTER * 2);
-
   const panelHeightPx = Math.max(180, Math.round(PANEL_AREA * bgH));
   const panelTopPx = 8 + bgY;
 
-  const doodles = ["/doodle5.png","/doodle4.png", "/doodle6.png"];
+  const doodles = ["/doodle5.png", "/doodle4.png", "/doodle6.png"];
   const doodleSrc = doodles[index % doodles.length];
 
   return (
@@ -191,52 +179,19 @@ function TeamCard({ member, index = 0, className = "", ...rest }) {
         className="absolute left-1/2 -translate-x-1/2 z-10"
         style={{ bottom: FOOTER_H }}
       >
-        <div
+        <Image
+          src={img}
+          alt={name}
+          width={520}
+          height={520}
+          className="grayscale object-contain"
           style={{
-            WebkitMaskImage: `url("data:image/svg+xml;utf8,
-              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'>
-                <defs>
-                  <linearGradient id='fade' x1='0' y1='0' x2='0' y2='1'>
-                    <stop offset='0' stop-color='white'/>
-                    <stop offset='1' stop-color='black'/>
-                  </linearGradient>
-                </defs>
-                <rect width='100' height='70' fill='white'/>
-                <path d='M0,70 5,65 10,70 15,65 20,70 25,65 30,70 35,65 40,70 45,65 50,70 55,65 60,70 65,65 70,70 75,65 80,70 85,65 90,70 95,65 100,70 100,100 0,100 Z'
-                      fill='url(%23fade)'/>
-              </svg>")`,
-            maskImage: `url("data:image/svg+xml;utf8,
-              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'>
-                <defs>
-                  <linearGradient id='fade' x1='0' y1='0' x2='0' y2='1'>
-                    <stop offset='0' stop-color='white'/>
-                    <stop offset='1' stop-color='black'/>
-                  </linearGradient>
-                </defs>
-                <rect width='100' height='70' fill='white'/>
-                <path d='M0,70 5,65 10,70 15,65 20,70 25,65 30,70 35,65 40,70 45,65 50,70 55,65 60,70 65,65 70,70 75,65 80,70 85,65 90,70 95,65 100,70 100,100 0,100 Z'
-                      fill='url(%23fade)'/>
-              </svg>")`,
-            WebkitMaskRepeat: "no-repeat",
-            maskRepeat: "no-repeat",
-            WebkitMaskSize: "100% 100%",
-            maskSize: "100% 100%",
+            transform: `translate(${x}px, ${y}px) scale(${scale})`,
+            transformOrigin: "center bottom",
+            display: "block",
           }}
-        >
-          <Image
-            src={img}
-            alt={name}
-            width={520}
-            height={520}
-            className="grayscale object-contain"
-            style={{
-              transform: `translate(${x}px, ${y}px) scale(${scale})`,
-              transformOrigin: "center bottom",
-              display: "block",
-            }}
-            draggable={false}
-          />
-        </div>
+          draggable={false}
+        />
       </div>
 
       {/* Footer */}
@@ -247,27 +202,28 @@ function TeamCard({ member, index = 0, className = "", ...rest }) {
             <p className="text-sm opacity-90">{role}</p>
           </div>
           <div className="flex items-center gap-4 text-white/95 text-lg">
-            <a
-              href="#"
-              aria-label={`${name} on Facebook`}
-              className="hover:opacity-80"
-            >
-              <FaFacebookF />
-            </a>
-            <a
-              href="#"
-              aria-label={`${name} on Twitter`}
-              className="hover:opacity-80"
-            >
-              <FaTwitter />
-            </a>
-            <a
-              href="#"
-              aria-label={`${name} on Instagram`}
-              className="hover:opacity-80"
-            >
-              <FaInstagram />
-            </a>
+            {linkedin && (
+              <a
+                href={linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${name} on LinkedIn`}
+                className="hover:opacity-80"
+              >
+                <FaLinkedinIn />
+              </a>
+            )}
+            {twitter && (
+              <a
+                href={twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${name} on Twitter`}
+                className="hover:opacity-80"
+              >
+                {/* <BsTwitterX /> */}
+              </a>
+            )}
           </div>
         </div>
       </div>

@@ -17,7 +17,10 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-white text-black dark:bg-black dark:text-white">
+    <div
+      id="home"
+      className="bg-white text-black dark:bg-black dark:text-white"
+    >
       <motion.div
         variants={fadeUp}
         initial="hidden"
@@ -31,6 +34,7 @@ export default function Home() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
+        id="about"
       >
         <AboutUsComponent />
       </motion.div>
@@ -40,18 +44,22 @@ export default function Home() {
         variants={fadeUp}
         initial="hidden"
         whileInView="show"
+        id="projects"
         viewport={{ once: true, amount: 0.3 }}
       >
         <Projects fadeUp={fadeUp} />
       </motion.div>
 
-      <MyTeam />
+      <div id="team">
+        <MyTeam />
+      </div>
 
       <motion.div
         variants={fadeUp}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
+        id="contact"
       >
         <ContactUs />
       </motion.div>
@@ -73,7 +81,7 @@ const HeroComponent = () => {
         <div className="relative z-10 flex items-center h-full">
           <div className="container mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <h1 className="text-[1.9rem] leading-tight sm:text-5xl md:text-6xl font-bold max-w-[22ch]">
-              Crafting Code  <span className="text-green-400">{"{ }"}</span> &
+              Crafting Code <span className="text-green-400">{"{ }"}</span> &
               <br />
               Creating Impact.
             </h1>
@@ -159,8 +167,7 @@ const logoSrcs = [
   "/title_logo.png",
   "/logolux.png",
   "/client1.png",
-  "https://www.thecloroxcompany.com/wp-content/uploads/2022/08/TCC_Stacked_1200x1200.png"
-
+  "https://www.thecloroxcompany.com/wp-content/uploads/2022/08/TCC_Stacked_1200x1200.png",
 ];
 
 const AboutUsComponent = () => {
@@ -217,11 +224,12 @@ const AboutUsComponent = () => {
                 About US
               </h2>
               <p className="mt-2 text-base sm:text-lg leading-relaxed text-gray-800 dark:text-gray-300 max-w-prose">
-              NepSoft builds custom software that powers critical operations. 
-              We partner with financial institutions, healthcare providers, 
-              technology companies, and public agencies to design, engineer, 
-              and scale secure digital systems. Through disciplined build practices and human-centered design, 
-              we ship products that are dependable, compliant, and effortless to use.
+                NepSoft builds custom software that powers critical operations.
+                We partner with financial institutions, healthcare providers,
+                technology companies, and public agencies to design, engineer,
+                and scale secure digital systems. Through disciplined build
+                practices and human-centered design, we ship products that are
+                dependable, compliant, and effortless to use.
               </p>
             </div>
           </div>

@@ -24,8 +24,7 @@ const PROJECTS = [
     company: "Linh Hung",
     website: "Linh Hung ",
     url: "https://linhhung.com/",
-    image:
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=70",
+    image: "/client3.png",
   },
 ];
 
@@ -90,14 +89,21 @@ export default function Projects() {
                   {/* Bottom info */}
                   <div
                     className="
-                      absolute left-4 right-4 bottom-4
-                      opacity-100 translate-y-0
-                      lg:opacity-0 lg:translate-y-2
-                      lg:transition-all lg:duration-300
-                      lg:group-hover:opacity-100 lg:group-hover:translate-y-0
-                    "
+    absolute left-4 right-4 bottom-4
+    opacity-100 translate-y-0
+    lg:opacity-0 lg:translate-y-2
+    lg:transition-all lg:duration-300
+    lg:group-hover:opacity-85 lg:group-hover:translate-y-0
+  "
                   >
-                    <div className="text-white">
+                    <div
+                      className="
+      rounded-xl bg-black/15
+      lg:group-hover:bg-black/65 
+      transition-all duration-300 
+      text-white p-4
+    "
+                    >
                       <div className="flex items-center justify-between gap-3">
                         <div>
                           <h3 className="text-base font-bold md:font-semibold leading-tight">
