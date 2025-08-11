@@ -40,11 +40,11 @@ const Footer = () => {
           <div className="flex flex-col lg:flex-row justify-between gap-6">
             <div className="text-center lg:text-left">
               <p className="text-base sm:text-lg lg:w-3/4 mx-auto lg:mx-0">
-                At NEPSOFT, we transform ideas into powerful digital solutions.
-                From intuitive websites to innovative apps, we combine
-                cutting-edge technology with creative design to help brands
-                thrive in the digital era. Our passion is building tools that
-                make life easier, smarter, and more connected.
+              NepSoft builds custom software that powers critical operations. 
+              We partner with financial institutions, healthcare providers, 
+              technology companies, and public agencies to design, engineer, 
+              and scale secure digital systems. Through disciplined build practices and human-centered design, 
+              we ship products that are dependable, compliant, and effortless to use.
               </p>
             </div>
 

@@ -13,7 +13,7 @@ export default function MyTeam() {
   const members = [
     {
       name: "Rahul",
-      role: "Front End Developer",
+      role: "Full Stack Developer",
       img: "/rahul.png",
       scale: 1.2,
       x: 0,
