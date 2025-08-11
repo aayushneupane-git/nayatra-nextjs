@@ -37,7 +37,7 @@ export default function Projects() {
       {/* Full-width background */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/bg-2.jpg"
+          src="/bgimage3.jpg"
           alt=""
           fill
           priority

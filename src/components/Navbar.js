@@ -21,38 +21,61 @@ export default function Navbar() {
     { name: "About", id: "about" },
     { name: "Project", id: "projects" },
     { name: "Service", id: "services" },
-    // { name: "Client", id: "home" },
     { name: "Team", id: "team" },
   ];
 
-  const smoothScroll = useCallback((id) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.scrollIntoView({ behavior: "auto", block: "start" });
-  }, []);
+const smoothScroll = useCallback((id) => {
+  const el = document.getElementById(id);
+  if (!el) return;
 
-  const handleNav = (id, e) => {
-    if (e) e.preventDefault();
-    setIsOpen(false);
+  const nav = document.getElementById("site-nav");
+  const navHeight = nav?.offsetHeight || 0;
+  const topGap = 8; // top-2
+  const offset = navHeight + topGap;
 
+  const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
+  window.scrollTo({ top: y, behavior: "smooth" });
+}, []);
+
+const handleNav = (id, e) => {
+  if (e) e.preventDefault();
+
+  const run = () => {
     if (pathname === "/") {
-      // same page → smooth scroll
+      // same page: prevent default + smooth scroll
       smoothScroll(id);
-      // update hash without causing a jump
       history.replaceState(null, "", `/#${id}`);
     } else {
-      // navigate to home with hash
-      router.push(`/#${id}`);
+      // different page: disable Next's default scroll, then smooth scroll manually
+      router.push(`/#${id}`, { scroll: false });
+      // wait a frame so the new page lays out, then scroll
+      requestAnimationFrame(() => {
+        // small extra delay helps in some browsers
+        setTimeout(() => smoothScroll(id), 50);
+      });
     }
   };
 
+  if (isOpen) {
+    setIsOpen(false);        // close drawer first
+    setTimeout(run, 300);    // match your drawer transition duration
+  } else {
+    run();
+  }
+};
+
   return (
-    <nav className="fixed top-2 left-1/2 -translate-x-1/2 w-full max-w-7xl z-50 bg-white dark:bg-gray-900 rounded-xl shadow-md transition-colors duration-300">
+    <nav
+      id="site-nav"
+      className="fixed top-2 left-1/2 -translate-x-1/2 w-full max-w-7xl z-50 bg-white dark:bg-gray-900 rounded-xl shadow-md transition-colors duration-300"
+    >
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
           <div className="text-xl font-bold text-gray-900 dark:text-white">
-            <Link href="/"><span className="text-green-600">Nep</span>Soft</Link>
+            <Link href="/">
+              <span className="text-green-600">Nep</span>Soft
+            </Link>
           </div>
 
           {/* Desktop menu */}
@@ -61,7 +84,7 @@ export default function Navbar() {
               <a
                 key={item.id}
                 href={`/#${item.id}`}
-                onClick={(e) => handleNav(item.id, e)}  // pass a function, don't call directly
+                onClick={(e) => handleNav(item.id, e)}
                 className="text-gray-700 dark:text-gray-300 hover:text-green-500 dark:hover:text-green-400 transition-colors"
               >
                 {item.name}
@@ -88,9 +111,21 @@ export default function Navbar() {
               aria-controls="mobile-drawer"
             >
               <span className="sr-only">Open main menu</span>
-              <span className={`absolute block h-0.5 w-6 bg-current transition-all duration-300 ${isOpen ? "rotate-45" : "-translate-y-2"}`} />
-              <span className={`absolute block h-0.5 w-6 bg-current transition-opacity duration-300 ${isOpen ? "opacity-0" : "opacity-100"}`} />
-              <span className={`absolute block h-0.5 w-6 bg-current transition-all duration-300 ${isOpen ? "-rotate-45" : "translate-y-2"}`} />
+              <span
+                className={`absolute block h-0.5 w-6 bg-current transition-all duration-300 ${
+                  isOpen ? "rotate-45" : "-translate-y-2"
+                }`}
+              />
+              <span
+                className={`absolute block h-0.5 w-6 bg-current transition-opacity duration-300 ${
+                  isOpen ? "opacity-0" : "opacity-100"
+                }`}
+              />
+              <span
+                className={`absolute block h-0.5 w-6 bg-current transition-all duration-300 ${
+                  isOpen ? "-rotate-45" : "translate-y-2"
+                }`}
+              />
             </button>
           </div>
         </div>
@@ -98,14 +133,18 @@ export default function Navbar() {
 
       {/* Backdrop */}
       <div
-        className={`md:hidden fixed inset-0 z-40 transition-opacity duration-300 ${isOpen ? "bg-black/40 opacity-100" : "opacity-0 pointer-events-none"}`}
+        className={`md:hidden fixed inset-0 z-40 transition-opacity duration-300 ${
+          isOpen ? "bg-black/40 opacity-100" : "opacity-0 pointer-events-none"
+        }`}
         onClick={() => setIsOpen(false)}
       />
 
       {/* Right drawer */}
       <aside
         id="mobile-drawer"
-        className={`md:hidden fixed top-0 right-0 z-50 h-screen w-80 max-w-[85%] bg-white dark:bg-gray-900 shadow-xl border-l border-black/10 dark:border-white/10 transition-transform duration-300 ease-out ${isOpen ? "translate-x-0" : "translate-x-full"}`}
+        className={`md:hidden fixed top-0 right-0 z-50 h-screen w-80 max-w-[85%] bg-white dark:bg-gray-900 shadow-xl border-l border-black/10 dark:border-white/10 transition-transform duration-300 ease-out ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
         role="dialog"
         aria-modal="true"
       >
@@ -131,13 +170,22 @@ export default function Navbar() {
               <li key={item.id}>
                 <a
                   href={`/#${item.id}`}
-                  onClick={(e) => handleNav(item.id, e)}  // pass a function here too
+                  onClick={(e) => handleNav(item.id, e)}
                   className="block rounded-lg px-3 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-green-600 transition-colors"
                 >
                   {item.name}
                 </a>
               </li>
             ))}
+            <li>
+              <Link
+                href="/#contact"
+                onClick={(e) => handleNav("contact", e)}
+                className="block rounded-lg px-3 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-green-600 transition-colors"
+              >
+                Contact
+              </Link>
+            </li>
           </ul>
         </nav>
       </aside>
