@@ -215,10 +215,11 @@ const AboutUsComponent = () => {
                 About US
               </h2>
               <p className="mt-2 text-base sm:text-lg leading-relaxed text-gray-800 dark:text-gray-300 max-w-prose">
-                Concept Softworks is a software company, we develop custom built
-                software for clients – covering everything from financial
-                institutions &amp; medical companies all the way to tech
-                companies and government organizations.
+              NepSoft builds custom software that powers critical operations. 
+              We partner with financial institutions, healthcare providers, 
+              technology companies, and public agencies to design, engineer, 
+              and scale secure digital systems. Through disciplined build practices and human-centered design, 
+              we ship products that are dependable, compliant, and effortless to use.
               </p>
             </div>
           </div>
@@ -519,13 +520,13 @@ const ContactUs = () => {
               <h3 className="text-sm font-bold text-gray-500 mb-1 sm:mb-2 uppercase tracking-wide">
                 Phone
               </h3>
-              <p className="text-lg sm:text-xl">+1 (833) 562-3112</p>
+              <p className="text-lg sm:text-xl">+1 (817) 501-9777</p>
             </div>
             <div>
               <h3 className="text-sm font-bold text-gray-500 mb-1 sm:mb-2 uppercase tracking-wide">
                 Email
               </h3>
-              <p className="text-lg sm:text-xl">Hello@conceptsoftworks.com</p>
+              <p className="text-lg sm:text-xl">nepsoftusa@gmail.com</p>
             </div>
           </div>
         </div>
