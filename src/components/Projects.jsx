@@ -80,8 +80,8 @@ export default function Projects() {
                   {/* Top gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent pointer-events-none" />
 
-                  {/* Title chip */}
-                  <figcaption className="absolute left-4 top-4 select-none">
+                  {/* Title chip (hidden on phones) */}
+                  <figcaption className="absolute left-4 top-4 select-none hidden md:block">
                     <span className="inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-gray-900 shadow">
                       {p.title}
                     </span>
@@ -100,7 +100,7 @@ export default function Projects() {
                     <div className="text-white">
                       <div className="flex items-center justify-between gap-3">
                         <div>
-                          <h3 className="text-base font-semibold leading-tight">
+                          <h3 className="text-base font-bold md:font-semibold leading-tight">
                             {p.company}
                           </h3>
                           <div className="mt-1 flex items-center gap-2">
@@ -108,7 +108,7 @@ export default function Projects() {
                               className="inline-block h-2 w-2 rounded-full bg-green-500"
                               aria-hidden="true"
                             />
-                            <span className="text-xs text-white/90">
+                            <span className="text-sm md:text-xs text-white/90">
                               All systems operational
                             </span>
                           </div>
