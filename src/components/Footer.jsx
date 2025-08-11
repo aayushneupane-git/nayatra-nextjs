@@ -40,10 +40,11 @@ const Footer = () => {
           <div className="flex flex-col lg:flex-row justify-between gap-6">
             <div className="text-center lg:text-left">
               <p className="text-base sm:text-lg lg:w-3/4 mx-auto lg:mx-0">
-                Concept Softworks is a software company we develop custom built
-                software for clients - covering everything from financial
-                institutions & medical companies all the way to tech companies
-                and government organizations.
+                At NEPSOFT, we transform ideas into powerful digital solutions.
+                From intuitive websites to innovative apps, we combine
+                cutting-edge technology with creative design to help brands
+                thrive in the digital era. Our passion is building tools that
+                make life easier, smarter, and more connected.
               </p>
             </div>
 

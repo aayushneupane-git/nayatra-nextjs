@@ -63,7 +63,7 @@ const HeroComponent = () => {
     <>
       <section
         className="relative min-h-[60svh] sm:min-h-[80svh] h-[80vh] overflow-hidden md:h-[100vh] bg-cover bg-center text-white"
-        style={{ backgroundImage: "url('/bgimage.avif')" }}
+        style={{ backgroundImage: "url('/background.jpg')" }}
       >
         {/* Overlay: full on mobile, left-half on md+ */}
         <div className="absolute inset-0 md:inset-y-0 md:left-0 md:w-1/2 bg-black/60" />
@@ -72,9 +72,9 @@ const HeroComponent = () => {
         <div className="relative z-10 flex items-center h-full">
           <div className="container mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <h1 className="text-[1.9rem] leading-tight sm:text-5xl md:text-6xl font-bold max-w-[22ch]">
-              Let’s make <span className="text-green-400">{"{ }"}</span>
+              Crafting Code  <span className="text-green-400">{"{ }"}</span> &
               <br />
-              software together!
+              Creating Impact.
             </h1>
           </div>
         </div>
