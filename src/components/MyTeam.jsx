@@ -152,7 +152,7 @@ function TeamCard({ member, index = 0, className = "", ...rest }) {
   return (
     <article
       {...rest}
-      className={`relative rounded-[22px] shadow-lg overflow-hidden bg-white dark:bg-zinc-900 ${className}`}
+      className={`relative rounded-[22px] overflow-hidden bg-white dark:bg-zinc-900 ${className}`}
       style={{ height: CARD_H }}
     >
       <div

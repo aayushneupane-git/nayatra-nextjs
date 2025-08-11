@@ -155,11 +155,12 @@ const HeroComponent = () => {
 };
 
 const logoSrcs = [
-  "https://www.thecloroxcompany.com/wp-content/uploads/2022/08/TCC_Stacked_1200x1200.png",
-  "https://www.vhv.rs/dpng/d/8-81706_famous-company-logos-png-transparent-png.png",
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Southern_company_logo.png/250px-Southern_company_logo.png",
-  "https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkxNC1uaW5nLTE1YS5wbmc.png",
-  "https://www.pngkey.com/png/full/141-1417312_generic-branding-generic-company-logo-png.png",
+  "/client2.png",
+  "/title_logo.png",
+  "/logolux.jpg",
+  "/client1.png",
+  "https://www.thecloroxcompany.com/wp-content/uploads/2022/08/TCC_Stacked_1200x1200.png"
+
 ];
 
 const AboutUsComponent = () => {
