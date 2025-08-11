@@ -11,18 +11,7 @@ export default function MyTeam() {
 
   // Normalized values so all images align
   const members = [
-    {
-      name: "Rahul",
-      role: "Full Stack Developer",
-      img: "/rahul.png",
-      scale: 1.2,
-      x: 0,
-      y: 0,
-      bgW: 0.78,
-      bgH: 0.56,
-      bgX: 0,
-      bgY: 0,
-    },
+  
     {
       name: "Shishir Paudel",
       role: "Team Lead",
@@ -32,6 +21,18 @@ export default function MyTeam() {
       y: 0,
       bgW: 0.74,
       bgH: 0.54,
+      bgX: 0,
+      bgY: 0,
+    },
+      {
+      name: "Rahul",
+      role: "Full Stack Developer",
+      img: "/rahul.png",
+      scale: 1.2,
+      x: 0,
+      y: 0,
+      bgW: 0.78,
+      bgH: 0.56,
       bgX: 0,
       bgY: 0,
     },
@@ -146,7 +147,7 @@ function TeamCard({ member, index = 0, className = "", ...rest }) {
   const panelHeightPx = Math.max(180, Math.round(PANEL_AREA * bgH));
   const panelTopPx = 8 + bgY;
 
-  const doodles = ["/doodle4.png", "/doodle5.png", "/doodle6.png"];
+  const doodles = ["/doodle5.png","/doodle4.png", "/doodle6.png"];
   const doodleSrc = doodles[index % doodles.length];
 
   return (
