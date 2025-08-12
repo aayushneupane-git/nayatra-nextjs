@@ -153,9 +153,9 @@ const HeroComponent = () => {
         <div className="relative z-10 flex items-center h-full">
           <div className="container mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <h1 className="text-[1.9rem] leading-tight sm:text-5xl md:text-6xl font-bold max-w-[22ch]">
-              Lets Make <span className="text-green-400">{"{ }"}</span>
+              Lets make <span className="text-green-400">{"{ }"}</span>
               <br />
-              Softwares Together.
+              software together!
             </h1>
           </div>
         </div>
@@ -262,7 +262,6 @@ const AboutUsComponent = () => {
       <section className="relative py-16 sm:py-20 max-w-7xl w-full bg-white dark:bg-black text-black dark:text-white">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-5">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            {/* Images */}
             <div className="flex gap-3 sm:gap-4 justify-center">
               <Image
                 src="/aboutus_left.png"
