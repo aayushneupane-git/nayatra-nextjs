@@ -9,8 +9,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Projects from "@/components/Projects";
 import TestimonialSlider from "@/components/Testimonial";
-import Services from "@/components/Services";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
   const AccessKey = "c32c86cd-9803-4447-8faf-9c2dcc6cfc97";
