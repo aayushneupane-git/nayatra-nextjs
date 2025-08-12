@@ -10,7 +10,8 @@ const nextConfig = {
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "testgrid.io" },
       { protocol: "https", hostname: "ui-avatars.com" },
-      { protocol: "https", hostname: "randomuser.me" },
+      { protocol: "https", hostname: "media.nngroup.com" },
+      { protocol: "https", hostname: "swadhahospital.com" },
     ],
   },
 };
