@@ -10,8 +10,11 @@ import { motion } from "framer-motion";
 import Projects from "@/components/Projects";
 import TestimonialSlider from "@/components/Testimonial";
 import Services from "@/components/Services";
+import { ToastContainer } from "react-toastify";
 
 export default function Home() {
+  const AccessKey = "c32c86cd-9803-4447-8faf-9c2dcc6cfc97";
+
   const fadeUp = {
     hidden: { opacity: 0, y: 24 },
     show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
@@ -180,58 +183,69 @@ const HeroComponent = () => {
 
       {/* Mobile logos (stacked below section so they don't steal height) */}
       {/* Mobile logos (seamless infinite marquee) */}
-<div className="md:hidden px-4 pt-4">
-  <div className="bg-white/95 dark:bg-zinc-900/95 text-black dark:text-white rounded-2xl w-full max-w-7xl  overflow-hidden">
-    <div className="relative h-20">
-      <div className="absolute inset-0 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-        <ul className="inline-flex h-full items-center gap-6 whitespace-nowrap animate-logo-marquee will-change-transform">
-          {/* 1st copy */}
-          {logoSrcs.map((src, i) => (
-            <li key={`m1-${i}`} className="shrink-0 w-28 sm:w-32 flex items-center justify-center">
-              <Image
-                src={src}
-                alt={`Logo ${i + 1}`}
-                width={56}
-                height={56}
-                className="w-14 h-14 sm:w-16 sm:h-16 object-contain"
-                draggable={false}
-              />
-            </li>
-          ))}
-          {/* 2nd copy (for seamless loop) */}
-          {logoSrcs.map((src, i) => (
-            <li key={`m2-${i}`} className="shrink-0 w-28 sm:w-32 flex items-center justify-center" aria-hidden>
-              <Image
-                src={src}
-                alt=""
-                width={56}
-                height={56}
-                className="w-14 h-14 sm:w-16 sm:h-16 object-contain"
-                draggable={false}
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  </div>
+      <div className="md:hidden px-4 pt-4">
+        <div className="bg-white/95 dark:bg-zinc-900/95 text-black dark:text-white rounded-2xl w-full max-w-7xl  overflow-hidden">
+          <div className="relative h-20">
+            <div className="absolute inset-0 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+              <ul className="inline-flex h-full items-center gap-6 whitespace-nowrap animate-logo-marquee will-change-transform">
+                {/* 1st copy */}
+                {logoSrcs.map((src, i) => (
+                  <li
+                    key={`m1-${i}`}
+                    className="shrink-0 w-28 sm:w-32 flex items-center justify-center"
+                  >
+                    <Image
+                      src={src}
+                      alt={`Logo ${i + 1}`}
+                      width={56}
+                      height={56}
+                      className="w-14 h-14 sm:w-16 sm:h-16 object-contain"
+                      draggable={false}
+                    />
+                  </li>
+                ))}
+                {/* 2nd copy (for seamless loop) */}
+                {logoSrcs.map((src, i) => (
+                  <li
+                    key={`m2-${i}`}
+                    className="shrink-0 w-28 sm:w-32 flex items-center justify-center"
+                    aria-hidden
+                  >
+                    <Image
+                      src={src}
+                      alt=""
+                      width={56}
+                      height={56}
+                      className="w-14 h-14 sm:w-16 sm:h-16 object-contain"
+                      draggable={false}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
 
-  <style jsx>{`
-    @keyframes logo-marquee {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    .animate-logo-marquee {
-      animation: logo-marquee 25s linear infinite;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .animate-logo-marquee {
-        animation: none !important;
-        transform: translateX(0) !important;
-      }
-    }
-  `}</style>
-</div>
+        <style jsx>{`
+          @keyframes logo-marquee {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
+          }
+          .animate-logo-marquee {
+            animation: logo-marquee 25s linear infinite;
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .animate-logo-marquee {
+              animation: none !important;
+              transform: translateX(0) !important;
+            }
+          }
+        `}</style>
+      </div>
     </>
   );
 };
@@ -336,86 +350,52 @@ const ContactUs = () => {
     setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    alert(
-      `Message sent successfully!\n\nService: ${
-        selectedService || "Not specified"
-      }\nName: ${formData.name}\nEmail: ${formData.email}\nDetails: ${
-        formData.details
-      }`
-    );
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: "c32c86cd-9803-4447-8faf-9c2dcc6cfc97", // Your Web3Forms key
+          name: formData.name,
+          email: formData.email,
+          service: selectedService || "Not specified",
+          details: formData.details,
+        }),
+      });
 
-    // Reset form
-    setSelectedService(null);
-    setFormData({ name: "", email: "", details: "" });
+      const data = await res.json();
+
+      if (data.success) {
+        toast.success("Message sent successfully!", {
+          position: "top-right",
+          autoClose: 3000,
+        });
+        setFormData({ name: "", email: "", details: "" });
+        setSelectedService(null);
+      } else {
+        toast.error("❌ Failed to send. Please try again.", {
+          position: "top-right",
+          autoClose: 3000,
+        });
+      }
+    } catch (error) {
+      toast.error("⚠️ Network error. Please try again later.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+    }
   };
 
   return (
     <section className="relative overflow-hidden py-16 sm:py-20 bg-gray-100 dark:bg-black text-black dark:text-white">
-      {/* Doodle: top-right (tablet/desktop) */}
-
-      <div className="hidden lg:flex">
-        <Image
-          src="/haveaproject.png"
-          alt=""
-          aria-hidden="true"
-          priority={false}
-          width={900}
-          height={900}
-          className="
-    pointer-events-none select-none
-    absolute z-0
-    right-0 
-    top-10
-    w-[40vw] md:w-[42vw] lg:w-[36vw]
-    max-w-[780px] md:max-w-[640px] lg:max-w-[560px]
-    min-w-[320px]
-    opacity-90
-  "
-        />
-        <Image
-          src="/haveaproject2.png"
-          alt=""
-          aria-hidden="true"
-          priority={false}
-          width={900}
-          height={900}
-          className="
-    pointer-events-none select-none
-    absolute z-0
-    right-0 
-    top-[100px]   /* adjust this value so it’s right under the first one */
-    w-[2vw] md:w-[42vw] lg:w-[36vw]
-    max-w-[780px] md:max-w-[640px] lg:max-w-[560px]
-    min-w-[320px]
-    opacity-90
-  "
-        />
-
-        <Image
-          src="/doodle1.png"
-          alt=""
-          aria-hidden="true"
-          priority={false}
-          width={200}
-          height={200}
-          className="
-      pointer-events-none select-none
-      absolute z-0
-      right-30 
-      top-[200px] /* adjust to be right below the second one */
-      w-[10vw] md:w-[12vw] lg:w-[5vw]
-      max-w-[100px] md:max-w-[200px] lg:max-w-[100px]
-      min-w-[150px]
-      opacity-90
-    "
-        />
-      </div>
+      {/* Toastify container */}
+      <ToastContainer />
 
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-0 relative z-10">
-        <div className="flex flex-col lg:flex-row  justify-between gap-12">
+        <div className="flex flex-col lg:flex-row justify-between gap-12">
           {/* Left side - Contact form */}
           <div className="flex flex-col gap-6">
             <div>
@@ -482,6 +462,7 @@ const ContactUs = () => {
                   required
                 />
               </div>
+
               <button
                 type="submit"
                 className="bg-green-600 text-white px-5 sm:px-6 py-3 rounded-lg hover:bg-green-700 transition-colors mt-4 sm:mt-6 w-full sm:w-auto"
