@@ -61,7 +61,7 @@ export default function MyTeam() {
         className="pointer-events-none select-none hidden md:block absolute right-6 top-1/2 -translate-y-1/2 w-[18vw] max-w-[260px] min-w-[160px] opacity-90"
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 relative z-10">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-green-600 text-3xl font-bold">Our Team</h2>
 

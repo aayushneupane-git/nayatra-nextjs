@@ -15,7 +15,7 @@ const Footer = () => {
           opacity: 0.5,
         }}
       ></div>
-      <div className="max-w-7xl  mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl  mx-auto px-4 sm:px-6 lg:px-0">
         <div className="container  mx-auto px-4 relative z-10 flex flex-col gap-8 md:pt-20 md:pb-5">
           {/* Logo + Name */}
           <div className="max-w-md flex flex-col sm:flex-row gap-4 sm:items-center">

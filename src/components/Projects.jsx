@@ -46,7 +46,7 @@ export default function Projects() {
       </div>
 
       {/* Content constrained inside max-w */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
         <header className="pb-8 text-white">
           <h2 className="text-green-600 text-2xl sm:text-3xl font-bold dark:text-white relative z-10">
             From Our Developers

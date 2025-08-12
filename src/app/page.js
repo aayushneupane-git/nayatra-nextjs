@@ -39,7 +39,7 @@ export default function Home() {
         <AboutUsComponent />
       </motion.div>
       {/* <OurTeam /> */}
-      {/* <Services /> */}
+      <OurServices />
       <motion.div
         variants={fadeUp}
         initial="hidden"
@@ -67,6 +67,72 @@ export default function Home() {
   );
 }
 
+const OurServices = () => {
+  const [active, setActive] = useState(0);
+  const SERVICES = [
+    { title: "Product Design", desc: "UX, UI, Design Systems", id: 1 },
+    { title: "Ideation & Strategy", desc: "Discovery, Roadmapping", id: 2 },
+    { title: "Web and Mobile App Development", desc: "Next.js, React Native", id: 3 },
+    { title: "Embedded Systems", desc: "Edge, Firmware, IoT", id: 4 },
+  ];
+  return (
+   <section className="relative py-8 sm:py-10 lg:py-12 bg-white dark:bg-black">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 bg-[#3F3F3F] rounded-lg overflow-hidden">
+
+    <img
+      src="/doodle7.png"
+      alt=""
+      className="hidden lg:block absolute top-1/2 left-[40%] w-36 -translate-y-1/2 opacity-80 pointer-events-none select-none"
+    />
+    <img
+      src="/doodle9.png"
+      alt=""
+      className="hidden lg:block absolute top-4 left-4 w-20 opacity-80 pointer-events-none select-none"
+    />
+    <img
+      src="/doodle8.png"
+      alt=""
+      className="hidden lg:block absolute bottom-2 right-4 w-10 opacity-80 pointer-events-none select-none"
+    />
+    <img
+      src="/doodle10.png"
+      alt=""
+      className="hidden lg:block absolute bottom-10 left-1/4 w-20 opacity-80 pointer-events-none select-none"
+    />
+    <img
+      src="/doodle11.png"
+      alt=""
+      className="hidden lg:block absolute h-full left-32 opacity-80 pointer-events-none select-none"
+    />
+
+    <div className="relative z-10 flex flex-col gap-8 sm:gap-10 lg:gap-0 lg:flex-row lg:justify-between lg:items-center py-8 sm:py-10 lg:py-16 px-4 sm:px-6 lg:px-10">
+      {/* Left column */}
+      <div className="w-full lg:w-2/3">
+        <div className="text-white font-bold leading-snug text-2xl sm:text-3xl lg:text-4xl w-full lg:w-3/5">
+          See what we can do for you
+        </div>
+      </div>
+
+      {/* Right column */}
+      <div className="w-full lg:w-1/2 space-y-2 sm:space-y-3">
+        {SERVICES.map((s, index) => (
+          <div key={s.id} className="w-full border-b border-[#636060]">
+            <button
+              onClick={() => setActive(index)}
+              className="px-3 sm:px-4 py-2.5 sm:py-3 w-full text-left text-base sm:text-lg lg:text-xl text-white hover:bg-gray-600 transition-colors"
+            >
+              {s.title}
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+  );
+};
+
 const HeroComponent = () => {
   return (
     <>
@@ -74,10 +140,8 @@ const HeroComponent = () => {
         className="relative min-h-[60svh] sm:min-h-[80svh] h-[80vh] overflow-hidden md:h-[100vh] bg-cover bg-center text-white"
         style={{ backgroundImage: "url('/bgimage2.jpg')" }}
       >
-        {/* Overlay: full on mobile, left-half on md+ */}
         <div className="absolute inset-0 md:inset-y-0 md:left-0 md:w-1/2 bg-black/60" />
 
-        {/* Headline */}
         <div className="relative z-10 flex items-center h-full">
           <div className="container mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <h1 className="text-[1.9rem] leading-tight sm:text-5xl md:text-6xl font-bold max-w-[22ch]">
@@ -118,7 +182,7 @@ const HeroComponent = () => {
               {[...logoSrcs, ...logoSrcs].map((src, i) => (
                 <li
                   key={`logo-${i}`}
-                  className="basis-1/3 shrink-0 flex items-center justify-center px-3"
+                  className="basis-1/5 shrink-0 flex items-center gap-8 justify-center px-3"
                   aria-hidden={i >= logoSrcs.length ? true : undefined}
                 >
                   <Image
@@ -174,7 +238,7 @@ const AboutUsComponent = () => {
   return (
     <div className="flex items-center justify-center">
       <section className="relative py-16 sm:py-20 max-w-7xl w-full bg-white dark:bg-black text-black dark:text-white">
-        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-5">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Images */}
             <div className="flex gap-3 sm:gap-4 justify-center">
@@ -239,114 +303,6 @@ const AboutUsComponent = () => {
   );
 };
 
-const OurTeam = () => {
-  const teamMembers = [
-    {
-      intro: "Rahul's Reliable Roadmap",
-      name: "Rahul Shrestha",
-      role: "Team Manager • Strategic Lead",
-      img: "https://ui-avatars.com/api/?name=Rahul+Shrestha&background=0D8ABC&color=fff&rounded=true&size=128",
-      socials: {
-        github: "https://github.com/rahulshrestha",
-        instagram: "https://instagram.com/rahulshrestha",
-        linkedin: "https://linkedin.com/in/rahulshrestha",
-      },
-    },
-    {
-      intro: "Aayush's Adaptive Architecture",
-      name: "Aayush Neupane",
-      role: "Full Stack Developer • DevOps Engineer",
-      img: "https://ui-avatars.com/api/?name=Aayush+Neupane&background=4CAF50&color=fff&rounded=true&size=128",
-      socials: {
-        github: "https://github.com/aayushneupane",
-        instagram: "https://instagram.com/aayushneupane",
-        linkedin: "https://linkedin.com/in/aayushneupane",
-      },
-    },
-    {
-      intro: "Shishir's Seamless Solutions",
-      name: "Shishir Paudel",
-      role: "Full Stack Developer • Project Manager",
-      img: "https://ui-avatars.com/api/?name=Shishir+Paudel&background=673AB7&color=fff&rounded=true&size=128",
-      socials: {
-        github: "https://github.com/shishirpaudel",
-        instagram: "https://instagram.com/shishirpaudel",
-        linkedin: "https://linkedin.com/in/shishirpaudel",
-      },
-    },
-  ];
-
-  return (
-    <section className="py-16 sm:py-20 bg-white dark:bg-black text-black dark:text-white">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8 sm:mb-10">
-          <h2 className="text-3xl sm:text-4xl font-bold text-green-600">
-            Our Team
-          </h2>
-          <p className="mt-3 sm:mt-4 text-gray-600 dark:text-gray-300">
-            The minds that bring our vision to life.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {teamMembers.map((member, index) => (
-            <article
-              key={index}
-              className="bg-white dark:bg-zinc-900 rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300"
-            >
-              <Image
-                className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover mb-4 border-4 border-green-400"
-                src={member.img}
-                alt={member.name}
-                width={112}
-                height={112}
-              />
-              <h3 className="text-lg sm:text-xl font-bold mb-1">
-                {member.intro}
-              </h3>
-              <p className="text-sm sm:text-base font-medium">{member.name}</p>
-              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-4">
-                {member.role}
-              </p>
-              <div className="flex space-x-4 text-green-600 dark:text-green-400 text-xl">
-                {member.socials.github && (
-                  <a
-                    href={member.socials.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${member.name} GitHub`}
-                  >
-                    <FaGithub />
-                  </a>
-                )}
-                {member.socials.instagram && (
-                  <a
-                    href={member.socials.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${member.name} Instagram`}
-                  >
-                    <FaInstagram />
-                  </a>
-                )}
-                {member.socials.linkedin && (
-                  <a
-                    href={member.socials.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${member.name} LinkedIn`}
-                  >
-                    <FaLinkedin />
-                  </a>
-                )}
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
 const ContactUs = () => {
   const [selectedService, setSelectedService] = useState();
   const [formData, setFormData] = useState({
@@ -447,7 +403,7 @@ const ContactUs = () => {
         />
       </div>
 
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-0 relative z-10">
         <div className="flex flex-col lg:flex-row  justify-between gap-12">
           {/* Left side - Contact form */}
           <div className="flex flex-col gap-6">
