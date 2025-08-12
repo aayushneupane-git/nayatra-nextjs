@@ -1,11 +1,50 @@
+"use client";
+
+import { useCallback } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 import Image from "next/image";
 
 const Footer = () => {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const smoothScroll = useCallback((id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const nav = document.getElementById("site-nav");
+    const navHeight = nav?.offsetHeight || 0;
+    const topGap = 8;
+    const offset = navHeight + topGap;
+
+    const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  }, []);
+
+  const handleNav = (id, e) => {
+    if (e) e.preventDefault();
+
+    const run = () => {
+      if (pathname === "/") {
+        smoothScroll(id);
+        history.replaceState(null, "", `/#${id}`);
+      } else {
+        router.push(`/#${id}`, { scroll: false });
+        requestAnimationFrame(() => {
+          setTimeout(() => smoothScroll(id), 50);
+        });
+      }
+    };
+
+    run();
+  };
+
   return (
-    <footer className="relative text-white bg-green-600 h-auto  flex items-center py-8 md:py-0 dark:bg-gray-800">
+    <footer className="relative text-white bg-green-600 h-auto flex items-center py-8 md:py-0 dark:bg-gray-800">
+      {/* Background overlay */}
       <div
-        className="absolute inset-0 z-0 "
+        className="absolute inset-0 z-0"
         style={{
           backgroundImage: "url('/transparentfooter.png')",
           backgroundSize: "contain",
@@ -15,8 +54,9 @@ const Footer = () => {
           opacity: 0.5,
         }}
       ></div>
-      <div className="max-w-7xl  mx-auto px-4 sm:px-6 lg:px-0">
-        <div className="container  mx-auto px-4 relative z-10 flex flex-col gap-8 md:pt-20 md:pb-5">
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
+        <div className="container mx-auto px-4 relative z-10 flex flex-col gap-8 md:pt-20 md:pb-5">
           {/* Logo + Name */}
           <div className="max-w-md flex flex-col sm:flex-row gap-4 sm:items-center">
             <div className="flex justify-center sm:justify-start">
@@ -40,26 +80,36 @@ const Footer = () => {
           <div className="flex flex-col lg:flex-row justify-between gap-6">
             <div className="text-center lg:text-left">
               <p className="text-base sm:text-lg lg:w-3/4 mx-auto lg:mx-0">
-              NepSoft builds custom software that powers critical operations. 
-              We partner with financial institutions, healthcare providers, 
-              technology companies, and public agencies to design, engineer, 
-              and scale secure digital systems. Through disciplined build practices and human-centered design, 
-              we ship products that are dependable, compliant, and effortless to use.
+                NepSoft builds custom software that powers critical operations.
+                We partner with financial institutions, healthcare providers,
+                technology companies, and public agencies to design, engineer,
+                and scale secure digital systems. Through disciplined build
+                practices and human-centered design, we ship products that are
+                dependable, compliant, and effortless to use.
               </p>
             </div>
 
             <div className="flex flex-col gap-4 md:gap-6">
-              <div className="flex  justify-center md:justify-start gap-6">
-                {["About", "Project", "Service", "Client"].map((item) => (
+              {/* Footer Nav Links */}
+              <div className="flex justify-center md:justify-start gap-6">
+                {[
+                  { name: "About", id: "about" },
+                  { name: "Project", id: "projects" },
+                  { name: "Service", id: "services" },
+                  { name: "Team", id: "team" },
+                  { name: "Client", id: "clients" },
+                ].map((item) => (
                   <h3
-                    key={item}
-                    className="text-lg sm:text-xl font-bold hover:cursor-pointer"
+                    key={item.id}
+                    onClick={(e) => handleNav(item.id, e)}
+                    className="text-lg sm:text-xl font-bold hover:cursor-pointer hover:text-black/80 dark:hover:text-gray-300 transition-colors"
                   >
-                    {item}
+                    {item.name}
                   </h3>
                 ))}
               </div>
 
+              {/* Social icons */}
               <div className="flex justify-center md:justify-start gap-4 text-2xl">
                 <a
                   href="https://facebook.com"
@@ -86,7 +136,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="  text-center text-lg sm:text-xl opacity-90 font-bold">
+          <div className="text-center text-lg sm:text-xl opacity-90 font-bold">
             Copyright © NepSoft{" "}
             <span className="text-black dark:text-white">Inc.</span>
           </div>

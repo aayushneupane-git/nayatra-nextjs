@@ -22,6 +22,7 @@ export default function Navbar() {
     { name: "Project", id: "projects" },
     { name: "Service", id: "services" },
     { name: "Team", id: "team" },
+    { name: "Clients", id: "clients" },
   ];
 
 const smoothScroll = useCallback((id) => {

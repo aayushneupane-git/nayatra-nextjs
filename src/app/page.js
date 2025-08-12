@@ -86,7 +86,7 @@ const OurServices = () => {
     { title: "Custom Softwares", desc: "Edge, Firmware, IoT", id: 4 },
   ];
   return (
-    <section className="relative mx-2 py-8 sm:py-10 lg:py-12 bg-white dark:bg-black">
+    <section id="services" className="relative mx-2 py-8 sm:py-10 lg:py-12 bg-white dark:bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 bg-[#3F3F3F] rounded-lg overflow-hidden">
         <img
           src="/doodle7.png"
@@ -153,9 +153,9 @@ const HeroComponent = () => {
         <div className="relative z-10 flex items-center h-full">
           <div className="container mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <h1 className="text-[1.9rem] leading-tight sm:text-5xl md:text-6xl font-bold max-w-[22ch]">
-              Lets Make <span className="text-green-400">{"{ }"}</span>
+              Lets make <span className="text-green-400">{"{ }"}</span>
               <br />
-              Softwares Together.
+              software together!
             </h1>
           </div>
         </div>

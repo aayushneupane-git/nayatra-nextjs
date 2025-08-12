@@ -20,8 +20,8 @@ const PROJECTS = [
     image: "/work2.png",
   },
   {
-    title: "Linh Hung Premium Fashions",
-    company: "Linh Hung",
+    title: "Linh Hung Premium",
+    company: "Linh Hung Premium",
     website: "Linh Hung ",
     url: "https://linhhung.com/",
     image: "/client3.png",
