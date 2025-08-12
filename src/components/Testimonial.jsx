@@ -4,27 +4,31 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
+import taylor from "../../public/Taylor.jpeg";
+import kavish from "../../public/kavish.png";
+import ohiostate from "../../public/ohiostate.png";
+
 const testimonials = [
   {
     id: 1,
-    name: "John Doe",
-    role: "CEO, ABC Inc.",
-    avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YXZhdGFyfGVufDB8fDB8fHww",
-    text: "Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.",
+    name: "Taylor N.",
+    role: "CEO, Linh Hung Fashion",
+    avatar: taylor,
+    text: "I really loved the website. It’s beautifully designed, easy to navigate, delivered on time, and packed with thoughtful details that make the whole experience amazing. ",
   },
   {
     id: 2,
-    name: "Winter Doe",
-    role: "CTO, XYZ Corp.",
-    avatar: "https://media.nngroup.com/media/people/photos/2022-portrait-page-3.jpg.600x600_q75_autocrop_crop-smart_upscale.jpg",
-    text: "Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution.",
+    name: "Kavish S.",
+    role: "CTO, Vaccinity AI",
+    avatar: kavish,
+    text: "A great team to work with. Easy to communicate with, highly responsive, and dedicated to bringing our vision to life exactly as we imagined. ",
   },
   {
     id: 3,
-    name: "John Wick",
-    role: "Product Manager, Fake Corp.",
-    avatar: "https://swadhahospital.com/wp-content/uploads/2023/12/teati-1.jpg",
-    text: "Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps.",
+    name: "Ohio State Pizzas",
+    role: "Product Manager",
+    avatar: ohiostate,
+    text: "From concept to launch, the site was delivered with exceptional attention to detail, a seamless user experience, and a polished design that perfectly represents our brand. ",
   },
 ];
 
