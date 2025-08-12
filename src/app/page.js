@@ -264,7 +264,6 @@ const AboutUsComponent = () => {
       <section className="relative py-16 sm:py-20 max-w-7xl w-full bg-white dark:bg-black text-black dark:text-white">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-5">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            {/* Images */}
             <div className="flex gap-3 sm:gap-4 justify-center">
               <Image
                 src="/aboutus_left.png"
