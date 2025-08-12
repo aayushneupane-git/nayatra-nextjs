@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Projects from "@/components/Projects";
+import TestimonialSlider from "@/components/Testimonial";
 
 export default function Home() {
   const fadeUp = {
@@ -53,6 +54,9 @@ export default function Home() {
       <div id="team">
         <MyTeam />
       </div>
+      <div>
+        <TestimonialSlider />
+      </div>
 
       <motion.div
         variants={fadeUp}
@@ -72,64 +76,66 @@ const OurServices = () => {
   const SERVICES = [
     { title: "Product Design", desc: "UX, UI, Design Systems", id: 1 },
     { title: "Ideation & Strategy", desc: "Discovery, Roadmapping", id: 2 },
-    { title: "Web and Mobile App Development", desc: "Next.js, React Native", id: 3 },
+    {
+      title: "Web and Mobile App Development",
+      desc: "Next.js, React Native",
+      id: 3,
+    },
     { title: "Embedded Systems", desc: "Edge, Firmware, IoT", id: 4 },
   ];
   return (
-   <section className="relative py-8 sm:py-10 lg:py-12 bg-white dark:bg-black">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 bg-[#3F3F3F] rounded-lg overflow-hidden">
+    <section className="relative py-8 sm:py-10 lg:py-12 bg-white dark:bg-black">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 bg-[#3F3F3F] rounded-lg overflow-hidden">
+        <img
+          src="/doodle7.png"
+          alt=""
+          className="hidden lg:block absolute top-1/2 left-[40%] w-36 -translate-y-1/2 opacity-80 pointer-events-none select-none"
+        />
+        <img
+          src="/doodle9.png"
+          alt=""
+          className="hidden lg:block absolute top-4 left-4 w-20 opacity-80 pointer-events-none select-none"
+        />
+        <img
+          src="/doodle8.png"
+          alt=""
+          className="hidden lg:block absolute bottom-2 right-4 w-10 opacity-80 pointer-events-none select-none"
+        />
+        <img
+          src="/doodle10.png"
+          alt=""
+          className="hidden lg:block absolute bottom-10 left-1/4 w-20 opacity-80 pointer-events-none select-none"
+        />
+        <img
+          src="/doodle11.png"
+          alt=""
+          className="hidden lg:block absolute h-full left-32 opacity-80 pointer-events-none select-none"
+        />
 
-    <img
-      src="/doodle7.png"
-      alt=""
-      className="hidden lg:block absolute top-1/2 left-[40%] w-36 -translate-y-1/2 opacity-80 pointer-events-none select-none"
-    />
-    <img
-      src="/doodle9.png"
-      alt=""
-      className="hidden lg:block absolute top-4 left-4 w-20 opacity-80 pointer-events-none select-none"
-    />
-    <img
-      src="/doodle8.png"
-      alt=""
-      className="hidden lg:block absolute bottom-2 right-4 w-10 opacity-80 pointer-events-none select-none"
-    />
-    <img
-      src="/doodle10.png"
-      alt=""
-      className="hidden lg:block absolute bottom-10 left-1/4 w-20 opacity-80 pointer-events-none select-none"
-    />
-    <img
-      src="/doodle11.png"
-      alt=""
-      className="hidden lg:block absolute h-full left-32 opacity-80 pointer-events-none select-none"
-    />
+        <div className="relative z-10 flex flex-col gap-8 sm:gap-10 lg:gap-0 lg:flex-row lg:justify-between lg:items-center py-8 sm:py-10 lg:py-16 px-4 sm:px-6 lg:px-10">
+          {/* Left column */}
+          <div className="w-full lg:w-2/3">
+            <div className="text-white font-bold leading-snug text-2xl sm:text-3xl lg:text-4xl w-full lg:w-3/5">
+              See what we can do for you
+            </div>
+          </div>
 
-    <div className="relative z-10 flex flex-col gap-8 sm:gap-10 lg:gap-0 lg:flex-row lg:justify-between lg:items-center py-8 sm:py-10 lg:py-16 px-4 sm:px-6 lg:px-10">
-      {/* Left column */}
-      <div className="w-full lg:w-2/3">
-        <div className="text-white font-bold leading-snug text-2xl sm:text-3xl lg:text-4xl w-full lg:w-3/5">
-          See what we can do for you
+          {/* Right column */}
+          <div className="w-full lg:w-1/2 space-y-2 sm:space-y-3">
+            {SERVICES.map((s, index) => (
+              <div key={s.id} className="w-full border-b border-[#636060]">
+                <button
+                  onClick={() => setActive(index)}
+                  className="px-3 sm:px-4 py-2.5 sm:py-3 w-full text-left text-base sm:text-lg lg:text-xl text-white hover:bg-gray-600 transition-colors"
+                >
+                  {s.title}
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-
-      {/* Right column */}
-      <div className="w-full lg:w-1/2 space-y-2 sm:space-y-3">
-        {SERVICES.map((s, index) => (
-          <div key={s.id} className="w-full border-b border-[#636060]">
-            <button
-              onClick={() => setActive(index)}
-              className="px-3 sm:px-4 py-2.5 sm:py-3 w-full text-left text-base sm:text-lg lg:text-xl text-white hover:bg-gray-600 transition-colors"
-            >
-              {s.title}
-            </button>
-          </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
-
+    </section>
   );
 };
 
@@ -345,6 +351,7 @@ const ContactUs = () => {
   return (
     <section className="relative overflow-hidden py-16 sm:py-20 bg-gray-100 dark:bg-black text-black dark:text-white">
       {/* Doodle: top-right (tablet/desktop) */}
+
       <div className="hidden lg:flex">
         <Image
           src="/haveaproject.png"

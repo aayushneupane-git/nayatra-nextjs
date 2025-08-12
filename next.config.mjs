@@ -11,7 +11,10 @@ const nextConfig = {
       { protocol: "https", hostname: "testgrid.io" },
       { protocol: "https", hostname: "ui-avatars.com" },
     ],
+    domains: ["randomuser.me"],
   },
 };
 
 export default nextConfig;
+
+
