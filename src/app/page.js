@@ -9,9 +9,13 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Projects from "@/components/Projects";
 import TestimonialSlider from "@/components/Testimonial";
+<<<<<<< HEAD
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+=======
+import Services from "@/components/Services";
+>>>>>>> 19f40c129ed90e2390487f19c2897fa18174d7a5
 
 export default function Home() {
   const AccessKey = "c32c86cd-9803-4447-8faf-9c2dcc6cfc97";
@@ -61,6 +65,7 @@ export default function Home() {
       <div>
         <TestimonialSlider />
       </div>
+   
 
       <motion.div
         variants={fadeUp}
@@ -88,7 +93,7 @@ const OurServices = () => {
     { title: "Custom Softwares", desc: "Edge, Firmware, IoT", id: 4 },
   ];
   return (
-    <section className="relative py-8 sm:py-10 lg:py-12 bg-white dark:bg-black">
+    <section className="relative mx-2 py-8 sm:py-10 lg:py-12 bg-white dark:bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 bg-[#3F3F3F] rounded-lg overflow-hidden">
         <img
           src="/doodle7.png"

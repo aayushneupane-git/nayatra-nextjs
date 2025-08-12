@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   metadataBase: new URL("https://nepsoftsolutions.com"),
-  title: "NepSoft Solutions | Expert Web & App Development in Nepal",
+  title: "NepSoft Solutions | Expert Web & App Development",
   description:
     "NepSoft Solutions offers SEO-optimized websites, mobile apps, AI-powered software, and cloud solutions. Expert MERN stack and ERP development to grow your business.",
   keywords: [
@@ -34,7 +34,7 @@ export const metadata = {
     type: "website",
     locale: "en_US",
     url: "https://nepsoftsolutions.com",
-    title: "NepSoft Solutions | Expert Web & App Development in Nepal",
+    title: "NepSoft Solutions | Expert Web & App Development",
     description:
       "Top Nepal-based software company offering SEO-friendly websites, mobile apps, AI software, and cloud services tailored for your business growth.",
     siteName: "NepSoft Solutions",
@@ -43,13 +43,13 @@ export const metadata = {
         url: ogImage.src,
         width: 1200,
         height: 630,
-        alt: "NepSoft Solutions - Web & App Development in Nepal",
+        alt: "NepSoft Solutions - Web & App Development",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "NepSoft Solutions | Expert Web & App Development in Nepal",
+    title: "NepSoft Solutions | Expert Web & App Development",
     description:
       "NepSoft Solutions builds SEO-optimized websites, mobile apps, and AI-powered software to accelerate your business success.",
     images: [ogImage.src],
