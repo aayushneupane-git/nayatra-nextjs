@@ -1,21 +1,24 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { FaTwitter, FaLinkedinIn } from "react-icons/fa";
-import { BsTwitterX } from "react-icons/bs";
+import { FaLinkedinIn } from "react-icons/fa";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 export default function MyTeam() {
   const scrollerRef = useRef(null);
+
+  // NEW: arrow states
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
 
   const members = [
     {
       name: "Shishir Paudel",
       role: "Team Lead",
       img: "/shishir.png",
-      linkedin: "https://www.linkedin.com/in/shishir-paudel-58811b209/", // change to real profile
-      twitter: "https://twitter.com/shishirpaudel", // change to real profile
+      linkedin: "https://www.linkedin.com/in/shishir-paudel-58811b209/",
+      twitter: "https://twitter.com/shishirpaudel",
       scale: 1.2,
       bgW: 0.74,
       bgH: 0.54,
@@ -24,8 +27,8 @@ export default function MyTeam() {
       name: "Rahul",
       role: "Full Stack Developer",
       img: "/rahul.png",
-      linkedin: "https://www.linkedin.com/in/rashres", // change
-      twitter: "https://twitter.com/rahul", // change
+      linkedin: "https://www.linkedin.com/in/rashres",
+      twitter: "https://twitter.com/rahul",
       scale: 1.2,
       bgW: 0.78,
       bgH: 0.56,
@@ -34,13 +37,34 @@ export default function MyTeam() {
       name: "Aayush",
       role: "DevOps Lead",
       img: "/ayush.png",
-      linkedin: "https://www.linkedin.com/in/aaneupane", // change
-      twitter: "https://twitter.com/aayush", // change
+      linkedin: "https://www.linkedin.com/in/aaneupane",
+      twitter: "https://twitter.com/aayush",
       scale: 1.2,
       bgW: 0.76,
       bgH: 0.56,
     },
   ];
+
+  // NEW: keep arrow state in sync with scroll position
+  const updateArrows = useCallback(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const { scrollLeft, scrollWidth, clientWidth } = el;
+    setAtStart(scrollLeft <= 1);
+    setAtEnd(scrollLeft + clientWidth >= scrollWidth - 1);
+  }, []);
+
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    updateArrows();
+    el.addEventListener("scroll", updateArrows, { passive: true });
+    window.addEventListener("resize", updateArrows);
+    return () => {
+      el.removeEventListener("scroll", updateArrows);
+      window.removeEventListener("resize", updateArrows);
+    };
+  }, [updateArrows]);
 
   const scrollByCard = (dir) => {
     const el = scrollerRef.current;
@@ -48,6 +72,9 @@ export default function MyTeam() {
     const card = el.querySelector("[data-card]");
     const delta = card ? card.offsetWidth + 16 : 320;
     el.scrollBy({ left: dir === "left" ? -delta : delta, behavior: "smooth" });
+
+    // ensure state updates right after the smooth scroll settles
+    requestAnimationFrame(() => setTimeout(updateArrows, 320));
   };
 
   return (
@@ -65,17 +92,24 @@ export default function MyTeam() {
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-green-600 text-3xl font-bold">Our Team</h2>
 
+          {/* Mobile arrows */}
           <div className="flex gap-3 md:hidden">
             <button
               onClick={() => scrollByCard("left")}
-              className="w-11 h-11 rounded-full bg-zinc-900 text-white flex items-center justify-center hover:opacity-90 active:scale-95 transition"
+              disabled={atStart}
+              className={`w-11 h-11 rounded-full bg-zinc-900 text-white flex items-center justify-center transition
+                hover:opacity-90 active:scale-95
+                ${atStart ? "opacity-40 cursor-not-allowed" : ""}`}
               aria-label="Previous"
             >
               <FaArrowLeft />
             </button>
             <button
               onClick={() => scrollByCard("right")}
-              className="w-11 h-11 rounded-full bg-zinc-900 text-white flex items-center justify-center hover:opacity-90 active:scale-95 transition"
+              disabled={atEnd}
+              className={`w-11 h-11 rounded-full bg-zinc-900 text-white flex items-center justify-center transition
+                hover:opacity-90 active:scale-95
+                ${atEnd ? "opacity-40 cursor-not-allowed" : ""}`}
               aria-label="Next"
             >
               <FaArrowRight />
@@ -83,7 +117,7 @@ export default function MyTeam() {
           </div>
         </div>
 
-        {/* Mobile scroll */}
+        {/* Mobile horizontal scroll */}
         <div className="md:hidden -mx-4 px-4">
           <div
             ref={scrollerRef}
@@ -194,7 +228,6 @@ function TeamCard({ member, index = 0, className = "", ...rest }) {
         />
       </div>
 
-      {/* Footer */}
       <div className="absolute left-4 right-4 bottom-4">
         <div className="rounded-xl bg-gradient-to-b from-[#15A34A] to-[#16A34A] text-white p-4 flex items-center justify-between">
           <div>
@@ -213,17 +246,7 @@ function TeamCard({ member, index = 0, className = "", ...rest }) {
                 <FaLinkedinIn />
               </a>
             )}
-            {twitter && (
-              <a
-                href={twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${name} on Twitter`}
-                className="hover:opacity-80"
-              >
-                {/* <BsTwitterX /> */}
-              </a>
-            )}
+            {/* keep twitter spot if you want to re-enable later */}
           </div>
         </div>
       </div>
