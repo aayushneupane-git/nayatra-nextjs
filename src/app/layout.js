@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import ogImage from "../../public/favicon.ico";
+import customImage from "../../public/linkpreview.png";
 import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -40,7 +41,7 @@ export const metadata = {
     siteName: "NepSoft Solutions",
     images: [
       {
-        url: ogImage.src,
+        url: ogImage.customImage,
         width: 1200,
         height: 630,
         alt: "NepSoft Solutions - Web & App Development",
@@ -52,7 +53,7 @@ export const metadata = {
     title: "NepSoft Solutions | Expert Web & App Development",
     description:
       "NepSoft Solutions builds SEO-optimized websites, mobile apps, and AI-powered software to accelerate your business success.",
-    images: [ogImage.src],
+    images: [ogImage.customImage],
   },
 };
 
