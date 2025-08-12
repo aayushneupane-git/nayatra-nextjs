@@ -1,10 +1,8 @@
 "use client";
 
 import "../app/style.css";
-import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import MyTeam from "@/components/MyTeam";
 import { useState } from "react";
-import Footer from "@/components/Footer";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Projects from "@/components/Projects";
