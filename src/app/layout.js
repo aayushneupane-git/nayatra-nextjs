@@ -11,7 +11,7 @@ export const metadata = {
   metadataBase: new URL("https://nepsoftsolutions.com"),
   title: "NepSoft Solutions | Expert Web & App Development",
   description:
-    "NepSoft Solutions offers SEO-optimized websites, mobile apps, AI-powered software, and cloud solutions. Expert MERN stack and ERP development to grow your business.",
+    "NepSoft Solutions offers SEO-optimized websites, mobile apps, AI-powered software, and cloud solutions.",
   keywords: [
     "web development company Nepal",
     "website design Nepal",
