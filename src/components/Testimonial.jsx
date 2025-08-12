@@ -40,10 +40,10 @@ export default function TestimonialSlider() {
   };
 
   return (
-    <section className="max-w-7xl rounded-xl mb-5 mx-2 md:mx-auto flex flex-col md:flex-row shadow-sm overflow-hidden">
+    <section  id="clients" className="max-w-7xl rounded-xl mb-5 mx-2 md:mx-auto flex flex-col md:flex-row shadow-sm overflow-hidden">
       {/* Left Side */}
       <div className="relative w-full py-10  md:py-24 bg-green-600 md:w-1/2 flex flex-col justify-center items-center">
-        <div className="relative text-3xl md:text-5xl px-6 md:w-64 md:mx-auto text-indigo-100 font-semibold leading-tight tracking-tight z-20 text-center">
+        <div className="relative text-3xl md:text-5xl px-6 md:w-64 md:mx-auto text-white font-semibold leading-tight tracking-tight z-20 text-center">
           <span className="block">What Our</span>
           <span className="block">Clients</span>
           <span className="block">Are Saying!</span>

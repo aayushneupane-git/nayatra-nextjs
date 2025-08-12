@@ -86,7 +86,7 @@ const OurServices = () => {
     { title: "Custom Softwares", desc: "Edge, Firmware, IoT", id: 4 },
   ];
   return (
-    <section className="relative mx-2 py-8 sm:py-10 lg:py-12 bg-white dark:bg-black">
+    <section id="services" className="relative mx-2 py-8 sm:py-10 lg:py-12 bg-white dark:bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 bg-[#3F3F3F] rounded-lg overflow-hidden">
         <img
           src="/doodle7.png"
