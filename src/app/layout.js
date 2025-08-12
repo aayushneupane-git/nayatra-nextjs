@@ -12,7 +12,7 @@ export const metadata = {
   description:
     "NepSoft Solutions offers SEO-optimized websites, mobile apps, AI-powered software, and cloud solutions. Expert MERN stack and ERP development to grow your business.",
   keywords: [
-    "web development company Nepal",
+    "web development company ",
     "website design Nepal",
     "MERN stack developer Nepal",
     "mobile app development Nepal",

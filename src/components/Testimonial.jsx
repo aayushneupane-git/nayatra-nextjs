@@ -12,7 +12,7 @@ const testimonials = [
   {
     id: 1,
     name: "Taylor N.",
-    role: "CEO, Linh Hung Fashion",
+    role: "Founder, Linh Hung Fashion",
     avatar: taylor,
     text: "I really loved the website. It’s beautifully designed, easy to navigate, delivered on time, and packed with thoughtful details that make the whole experience amazing. ",
   },

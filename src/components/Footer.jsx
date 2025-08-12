@@ -50,7 +50,7 @@ const Footer = () => {
 
             <div className="flex flex-col gap-4 md:gap-6">
               <div className="flex  justify-center md:justify-start gap-6">
-                {["About", "Project", "Service", "Client"].map((item) => (
+                {["About", "Project", "Service", "Team"].map((item) => (
                   <h3
                     key={item}
                     className="text-lg sm:text-xl font-bold hover:cursor-pointer"
