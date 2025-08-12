@@ -1,6 +1,5 @@
 "use client";
 
-import Services from "@/components/Services";
 import "../app/style.css";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import MyTeam from "@/components/MyTeam";
@@ -81,7 +80,7 @@ const OurServices = () => {
       desc: "Next.js, React Native",
       id: 3,
     },
-    { title: "Embedded Systems", desc: "Edge, Firmware, IoT", id: 4 },
+    { title: "Custom Softwares", desc: "Edge, Firmware, IoT", id: 4 },
   ];
   return (
     <section className="relative py-8 sm:py-10 lg:py-12 bg-white dark:bg-black">
@@ -151,9 +150,9 @@ const HeroComponent = () => {
         <div className="relative z-10 flex items-center h-full">
           <div className="container mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <h1 className="text-[1.9rem] leading-tight sm:text-5xl md:text-6xl font-bold max-w-[22ch]">
-              Crafting Code <span className="text-green-400">{"{ }"}</span> &
+              Lets Make <span className="text-green-400">{"{ }"}</span>
               <br />
-              Creating Impact.
+              Softwares Together.
             </h1>
           </div>
         </div>
@@ -178,56 +177,59 @@ const HeroComponent = () => {
       </section>
 
       {/* Mobile logos (stacked below section so they don't steal height) */}
-      <div className="md:hidden px-4 pt-4">
-        <div className="bg-white/95 dark:bg-zinc-900/95 text-black dark:text-white rounded-2xl w-full max-w-7xl shadow-lg overflow-hidden">
-          <div className="relative h-20">
-            {" "}
-            {/* fixed height for the strip */}
-            <ul className="flex h-full animate-logo-marquee will-change-transform hover:[animation-play-state:paused] [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-              {/* Duplicate list for seamless loop */}
-              {[...logoSrcs, ...logoSrcs].map((src, i) => (
-                <li
-                  key={`logo-${i}`}
-                  className="basis-1/5 shrink-0 flex items-center gap-8 justify-center px-3"
-                  aria-hidden={i >= logoSrcs.length ? true : undefined}
-                >
-                  <Image
-                    src={src}
-                    alt={`Logo ${(i % logoSrcs.length) + 1}`}
-                    width={56}
-                    height={56}
-                    className="w-14 h-14 object-contain"
-                    draggable={false}
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* styled-jsx for the marquee (scoped to this component) */}
-        <style jsx>{`
-          @keyframes logo-marquee {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(-50%);
-            }
-          }
-          /* duration = slower = smoother; tweak 25s → 35s to go slower */
-          .animate-logo-marquee {
-            animation: logo-marquee 25s linear infinite;
-          }
-          /* Respect reduced motion */
-          @media (prefers-reduced-motion: reduce) {
-            .animate-logo-marquee {
-              animation: none !important;
-              transform: translateX(0) !important;
-            }
-          }
-        `}</style>
+      {/* Mobile logos (seamless infinite marquee) */}
+<div className="md:hidden px-4 pt-4">
+  <div className="bg-white/95 dark:bg-zinc-900/95 text-black dark:text-white rounded-2xl w-full max-w-7xl  overflow-hidden">
+    <div className="relative h-20">
+      <div className="absolute inset-0 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+        <ul className="inline-flex h-full items-center gap-6 whitespace-nowrap animate-logo-marquee will-change-transform">
+          {/* 1st copy */}
+          {logoSrcs.map((src, i) => (
+            <li key={`m1-${i}`} className="shrink-0 w-28 sm:w-32 flex items-center justify-center">
+              <Image
+                src={src}
+                alt={`Logo ${i + 1}`}
+                width={56}
+                height={56}
+                className="w-14 h-14 sm:w-16 sm:h-16 object-contain"
+                draggable={false}
+              />
+            </li>
+          ))}
+          {/* 2nd copy (for seamless loop) */}
+          {logoSrcs.map((src, i) => (
+            <li key={`m2-${i}`} className="shrink-0 w-28 sm:w-32 flex items-center justify-center" aria-hidden>
+              <Image
+                src={src}
+                alt=""
+                width={56}
+                height={56}
+                className="w-14 h-14 sm:w-16 sm:h-16 object-contain"
+                draggable={false}
+              />
+            </li>
+          ))}
+        </ul>
       </div>
+    </div>
+  </div>
+
+  <style jsx>{`
+    @keyframes logo-marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-logo-marquee {
+      animation: logo-marquee 25s linear infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .animate-logo-marquee {
+        animation: none !important;
+        transform: translateX(0) !important;
+      }
+    }
+  `}</style>
+</div>
     </>
   );
 };
