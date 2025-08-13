@@ -14,7 +14,7 @@ export default function MyTeam() {
 
   const members = [
     {
-      name: "Shishir Paudel",
+      name: "Shishir",
       role: "Team Lead",
       img: "/shishir.png",
       linkedin: "https://www.linkedin.com/in/shishir-paudel-58811b209/",
