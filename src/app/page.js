@@ -260,29 +260,22 @@ const AboutUsComponent = () => {
   return (
     <div className="flex items-center justify-center">
       <section className="relative py-16 sm:py-20 max-w-7xl w-full bg-white dark:bg-black text-black dark:text-white">
-        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-5">
+        <div className="container max-w-7xl px-4 sm:px-6 lg:px-5">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="flex gap-3 sm:gap-4 justify-center">
-              <Image
+              <img
                 src="/aboutus_left.png"
                 alt="Team collaboration left"
-                width={400}
-                height={500}
                 className="w-1/3 rounded-lg shadow-md object-cover"
-                priority={false}
               />
-              <Image
+              <img
                 src="/aboutus_middle.png"
                 alt="Team collaboration middle"
-                width={400}
-                height={500}
                 className="w-1/3 rounded-lg shadow-md object-cover"
               />
-              <Image
+              <img
                 src="/aboutus_right.png"
                 alt="Team collaboration right"
-                width={400}
-                height={500}
                 className="w-1/3 rounded-lg shadow-md object-cover"
               />
             </div>

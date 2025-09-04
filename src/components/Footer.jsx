@@ -41,7 +41,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative text-white bg-green-600 h-auto flex items-center py-8 md:py-0 dark:bg-gray-800">
+    <footer className="relative text-white bg-green-600 overflow-hidden flex items-center py-8 md:py-0 dark:bg-gray-800">
       {/* Background overlay */}
       <div
         className="absolute inset-0 z-0"
@@ -58,10 +58,10 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
         <div className="container mx-auto px-4 relative z-10 flex flex-col gap-8 md:pt-20 md:pb-5">
           {/* Logo + Name */}
-          <div className="max-w-md flex flex-col sm:flex-row gap-4 sm:items-center">
+          <div className="max-w-md flex flex-col sm:flex-row gap-8 sm:items-center">
             <div className="flex justify-center sm:justify-start">
               <Image
-                src="/logo_white.png"
+                src="/whitewordmark.png"
                 alt="NepSoft logo"
                 width={150}
                 height={60}

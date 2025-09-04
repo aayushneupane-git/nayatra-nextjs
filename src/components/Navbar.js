@@ -25,45 +25,45 @@ export default function Navbar() {
     { name: "Clients", id: "clients" },
   ];
 
-const smoothScroll = useCallback((id) => {
-  const el = document.getElementById(id);
-  if (!el) return;
+  const smoothScroll = useCallback((id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
 
-  const nav = document.getElementById("site-nav");
-  const navHeight = nav?.offsetHeight || 0;
-  const topGap = 8; // top-2
-  const offset = navHeight + topGap;
+    const nav = document.getElementById("site-nav");
+    const navHeight = nav?.offsetHeight || 0;
+    const topGap = 8; // top-2
+    const offset = navHeight + topGap;
 
-  const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
-  window.scrollTo({ top: y, behavior: "smooth" });
-}, []);
+    const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  }, []);
 
-const handleNav = (id, e) => {
-  if (e) e.preventDefault();
+  const handleNav = (id, e) => {
+    if (e) e.preventDefault();
 
-  const run = () => {
-    if (pathname === "/") {
-      // same page: prevent default + smooth scroll
-      smoothScroll(id);
-      history.replaceState(null, "", `/#${id}`);
+    const run = () => {
+      if (pathname === "/") {
+        // same page: prevent default + smooth scroll
+        smoothScroll(id);
+        history.replaceState(null, "", `/#${id}`);
+      } else {
+        // different page: disable Next's default scroll, then smooth scroll manually
+        router.push(`/#${id}`, { scroll: false });
+        // wait a frame so the new page lays out, then scroll
+        requestAnimationFrame(() => {
+          // small extra delay helps in some browsers
+          setTimeout(() => smoothScroll(id), 50);
+        });
+      }
+    };
+
+    if (isOpen) {
+      setIsOpen(false); // close drawer first
+      setTimeout(run, 300); // match your drawer transition duration
     } else {
-      // different page: disable Next's default scroll, then smooth scroll manually
-      router.push(`/#${id}`, { scroll: false });
-      // wait a frame so the new page lays out, then scroll
-      requestAnimationFrame(() => {
-        // small extra delay helps in some browsers
-        setTimeout(() => smoothScroll(id), 50);
-      });
+      run();
     }
   };
-
-  if (isOpen) {
-    setIsOpen(false);        // close drawer first
-    setTimeout(run, 300);    // match your drawer transition duration
-  } else {
-    run();
-  }
-};
 
   return (
     <nav
@@ -75,7 +75,7 @@ const handleNav = (id, e) => {
           {/* Logo */}
           <div className="text-xl font-bold text-gray-900 dark:text-white">
             <Link href="/">
-              <span className="text-green-600">Nep</span>Soft
+              <img className=" w-20 h-6 md:w-23 md:h-8" src="/mainlogo.png" />
             </Link>
           </div>
 
@@ -151,8 +151,8 @@ const handleNav = (id, e) => {
       >
         <div className="flex items-center justify-between h-16 px-4 border-b border-black/10 dark:border-white/10">
           <div className="text-lg font-bold text-gray-900 dark:text-white">
-            <Link href="/" onClick={() => setIsOpen(false)}>
-              <span className="text-green-600">Nep</span>Soft
+            <Link href="/">
+              <img className=" w-20 h-6 md:w-23 md:h-8" src="/mainlogo.png" />
             </Link>
           </div>
           <button
