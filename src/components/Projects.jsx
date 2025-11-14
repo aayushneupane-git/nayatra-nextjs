@@ -8,8 +8,8 @@ const PROJECTS = [
   {
     title: "Ohio State Pizzas",
     company: "Ohio State Pizzas",
-    website: "https://ohiostatepizzas.com/",
-    url: "https://ohiostatepizzas.com/",
+    website: "/",
+    url: "/",
     image: "/work1.png",
   },
   {
